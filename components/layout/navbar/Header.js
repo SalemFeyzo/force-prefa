@@ -21,13 +21,15 @@ const Header = () => {
             src="/images/leftUpCorner.svg"
             width={screenWidth < 765 ? '100' : '130'}
             height={screenWidth < 765 ? '100' : '130'}
+            alt="leftUpCorner"
           />
         </div>
-        <div className="md:mr-10">
+        <div className="mt-3 md:mr-10">
           <Image
             src="/images/logo.svg"
             width={screenWidth < 765 ? '80' : '150'}
             height={screenWidth < 765 ? '80' : '150'}
+            alt="Force Prefabricate"
           />
         </div>
       </div>

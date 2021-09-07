@@ -22,6 +22,7 @@ const LangMenu = () => {
               width="25px"
               height="15px"
               className="object-cover"
+              alt="ar"
             />
           </a>
         </Link>
@@ -39,6 +40,7 @@ const LangMenu = () => {
               width="25px"
               height="15px"
               className="object-cover"
+              alt="tr"
             />
           </a>
         </Link>
@@ -56,6 +58,7 @@ const LangMenu = () => {
               width="25px"
               height="15px"
               className="object-cover"
+              alt="en"
             />
           </a>
         </Link>

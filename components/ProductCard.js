@@ -14,6 +14,7 @@ const ProductCard = ({ product }) => {
             width="700px"
             height="400px"
             className="object-fill inset-0 mt-1"
+            alt={product.title}
           />
           <div
             className="p-2 font-bold"
