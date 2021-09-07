@@ -41,36 +41,63 @@ const ProductDetails = ({ product }) => {
 
 export default ProductDetails
 
-export async function getStaticPaths({ locales }) {
-  const res = await fetch(`${process.env.API_URL}/products`)
-  const products = await res.json()
+// this code below cause an issue
+// export async function getStaticPaths() {
+//   const res = await fetch(`${process.env.API_URL}/products`)
+//   const products = await res.json()
 
-  if (!products) {
-    return {
-      notFound: true,
-    }
-  }
+//   if (!products) {
+//     return {
+//       notFound: true,
+//     }
+//   }
 
-  const paths = products.map((product) => {
-    return {
-      params: {
-        id: product.id.toString(),
-        locale: product.locale,
-      },
-    }
-  })
+//   const paths = products.map((product) => {
+//     return {
+//       params: {
+//         id: product.id.toString(),
+//       },
+//     }
+//   })
 
-  return {
-    paths,
-    fallback: true,
-  }
-}
+//   return {
+//     paths,
+//     fallback: true,
+//   }
+// }
 
-export async function getStaticProps(context) {
+// export async function getStaticProps(context) {
+//   const id = context.params.id
+//   const currentLocale = context.locale.toString()
+
+//   const res = await fetch(`${process.env.API_URL}/products/${id}`)
+//   const product = await res.json()
+
+//   const matchedLocale = product.localizations.find(
+//     (l) => l.locale === currentLocale,
+//   )
+
+//   let loclizedProduct = undefined
+//   if (currentLocale !== product.locale) {
+//     const loclizedProductRes = await fetch(
+//       `${process.env.API_URL}/products/${matchedLocale.id}`,
+//     )
+//     loclizedProduct = await loclizedProductRes.json()
+//   }
+
+//   return {
+//     props: {
+//       product: loclizedProduct ? loclizedProduct : product,
+//       messages: require(`../../locales/${context.locale}.json`),
+//     },
+//     revalidate: 60,
+//   }
+// }
+
+export async function getServerSideProps(context) {
   const id = context.params.id
   const currentLocale = context.locale.toString()
 
-  console.log(currentLocale)
   const res = await fetch(`${process.env.API_URL}/products/${id}`)
   const product = await res.json()
 
@@ -91,6 +118,5 @@ export async function getStaticProps(context) {
       product: loclizedProduct ? loclizedProduct : product,
       messages: require(`../../locales/${context.locale}.json`),
     },
-    revalidate: 60,
   }
 }
