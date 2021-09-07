@@ -63,3 +63,23 @@
   animation-delay: 0s;
   -webkit-animation-delay: 0s; /* Safari 和 Chrome */
 }
+
+.image-gallery-icon:hover {
+  color: #c4d10f !important;
+}
+.image-gallery-slide .image-gallery-image {
+  border-radius: 4px !important;
+}
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+  border-radius: 4px !important;
+}
+.image-gallery-thumbnail:hover {
+  border-color: #c4d10f !important;
+  border-radius: 4px !important;
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  border-color: #c4d10f !important;
+  border-radius: 4px !important;
+}

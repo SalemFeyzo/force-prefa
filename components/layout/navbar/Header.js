@@ -24,7 +24,7 @@ const Header = () => {
             alt="leftUpCorner"
           />
         </div>
-        <div className="mt-3 md:mr-10">
+        <div className="mt-2 md:mr-5 lg:mr-11">
           <Image
             src="/images/logo.svg"
             width={screenWidth < 765 ? '80' : '150'}

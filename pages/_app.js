@@ -1,5 +1,6 @@
 import { NextIntlProvider } from 'next-intl'
 import Layout from '../components/layout'
+import 'react-image-gallery/styles/css/image-gallery.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

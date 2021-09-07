@@ -20,13 +20,25 @@ const NavbarMenu = () => {
             <div className="hidden md:block">
               <div className="ml-0 flex items-baseline space-x-4">
                 <Link href="/" locale={router.locale}>
-                  <a className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <a
+                    className={`${
+                      router.asPath === '/'
+                        ? 'bg-gray-700 text-white'
+                        : ''
+                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  >
                     {t('home')}
                   </a>
                 </Link>
 
                 <Link href="/products" locale={router.locale}>
-                  <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <a
+                    className={`${
+                      router.asPath === '/products'
+                        ? 'bg-gray-700 text-white'
+                        : ''
+                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  >
                     {t('products')}
                   </a>
                 </Link>
@@ -116,32 +128,56 @@ const NavbarMenu = () => {
               className="px-2 pt-2 pb-3 space-y-1 sm:px-3"
             >
               <Link href="/" locale={router.locale}>
-                <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
+                <a
+                  className={`${
+                    router.asPath === '/'
+                      ? 'bg-gray-700 text-white'
+                      : ''
+                  } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+                >
                   {t('home')}
                 </a>
               </Link>
 
               <Link href="/products" locale={router.locale}>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                <a
+                  className={`${
+                    router.asPath === '/products'
+                      ? 'bg-gray-700 text-white'
+                      : ''
+                  } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+                >
                   {t('products')}
                 </a>
               </Link>
 
               <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className={`${
+                  router.asPath === '/projects'
+                    ? 'bg-gray-700 text-white'
+                    : ''
+                } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
               >
                 {t('projects')}
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className={`${
+                  router.asPath === '/about'
+                    ? 'bg-gray-700 text-white'
+                    : ''
+                } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
               >
                 {t('about')}
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className={`${
+                  router.asPath === '/contact'
+                    ? 'bg-gray-700 text-white'
+                    : ''
+                } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
               >
                 {t('contact')}
               </a>

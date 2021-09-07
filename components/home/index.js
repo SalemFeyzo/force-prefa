@@ -22,7 +22,7 @@ const Home = ({ products }) => {
           </div>
         </div>
       </div>
-      <div id="featured" className=" pt-32 pb-60 px-4 ml-5 mr-5  ">
+      <div id="featured" className=" pt-32 pb-60 px-4 mx-5">
         <FeaturedProducts featured={featured} />
       </div>
     </div>

@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import ImageGallery from 'react-image-gallery'
-import 'react-image-gallery/styles/css/image-gallery.css'
 
 const ProductDetails = ({ product }) => {
+  const router = useRouter()
   const { planImage, mainImage, perspectiveImage } = product
 
   const images = [
@@ -18,17 +20,28 @@ const ProductDetails = ({ product }) => {
       thumbnail: planImage.formats.thumbnail.url,
     },
   ]
+  const [screenWidth, setScreenWidth] = useState(0)
+
+  useEffect(() => {
+    setScreenWidth(window.screen.width)
+    return () => {
+      //
+    }
+  }, [])
 
   return (
-    <div className="container mx-auto bg-gray-400 rounded-md">
+    <div
+      className="container mx-auto bg-gray-300 rounded-md text-gray-900"
+      dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+    >
       <div className="grid gap-4 md:grid-cols-2 m-4 p-4 ">
         <div>
           <ImageGallery
             items={images}
-            showPlayButton={false}
+            showPlayButton={true}
             showNav={false}
             lazyLoad={true}
-            thumbnailPosition="right"
+            thumbnailPosition="bottom"
             // autoPlay={true}
           />
         </div>
