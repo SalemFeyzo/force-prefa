@@ -5,5 +5,23 @@
     "projects": "PROJECTS",
     "about": "ABOUT US",
     "contact": "CONTACT US"
+  },
+  "productDetails": {
+    "features": "General features:",
+    "rooms": "Rooms:",
+    "spaceSize": "Space Size:",
+    "m": "m²",
+    "wallHeight": "Wall Height:",
+    "structuralSteel": "Structural Steel:",
+    "exteriorWallPanels": "Exterior Wall Panels:",
+    "interiorWallPanels": "Interior Wall Panels:",
+    "roof": "Roof:",
+    "roofInsulation": "Roof Insulation:",
+    "exteriorDoor": "Exterior Door:",
+    "interiorDoor": "Enterior Door:",
+    "electricalInstallation": "Electrical Installation:",
+    "plumbing": "Plumbing:",
+    "windows": "Windows:",
+    "paint": "Paint:"
   }
 }

@@ -5,5 +5,23 @@
     "projects": "مشاريعنا",
     "about": "من نحن",
     "contact": "إتصل بنا"
+  },
+  "productDetails": {
+    "features": "الميزات العامة:",
+    "rooms": "عدد الغرف:",
+    "spaceSize": "المساحة:",
+    "m": "متر مربع",
+    "wallHeight": "إرتفاع الجدار:",
+    "structuralSteel": "الحديد الصلب:",
+    "exteriorWallPanels": "ألواح الجدران الخارجية:",
+    "interiorWallPanels": "ألواح الجدران الداخلية:",
+    "roof": "السقف:",
+    "roofInsulation": "عزل السقف:",
+    "exteriorDoor": "الباب الخارجي:",
+    "interiorDoor": "الباب الداخلي:",
+    "electricalInstallation": "تأسيسات الكهرباء:",
+    "plumbing": "تأسيسات المياه:",
+    "windows": "النوافذ:",
+    "paint": "الطلاء المستخدم:"
   }
 }

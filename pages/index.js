@@ -8,7 +8,7 @@ export default function HomePage({ products }) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const res = await fetch(
     `${process.env.API_URL}/products?_locale=${context.locale}`,
   )
@@ -23,8 +23,6 @@ export async function getStaticProps(context) {
   return {
     props: {
       products,
-      messages: require(`../locales/${context.locale}.json`),
     }, // will be passed to the page component as props
-    revalidate: 60,
   }
 }

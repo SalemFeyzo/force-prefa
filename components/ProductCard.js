@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
       <a>
         <div className="  border-4 border-black rounded-md bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 hover:bg-gradient-to-r hover:from-yellow-500 hover:via-yellow-200  hover:to-yellow-500">
           <Image
-            src={product.mainImage.formats.medium.url}
+            src={product.mainImages[0].formats.medium.url}
             width="700px"
             height="400px"
             className="object-fill inset-0 mt-1"
