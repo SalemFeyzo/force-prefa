@@ -30,7 +30,7 @@ const CategoriesMenu = () => {
       leaveFrom="transform scale-100 opacity-100"
       leaveTo="transform scale-95 opacity-0"
     >
-      <Popover.Panel className="absolute z-10 mt-5 mx-auto mr-0 px-8 py-4 rounded-b-md bg-gradient-to-b from-gray-900 via-gray-700 to-gray-900">
+      <Popover.Panel className="absolute z-10 mt-5 mx-auto mr-0 px-8 py-4 rounded-md bg-gradient-to-b from-gray-700 via-gray-600 to-gray-500 md:mt-8 md:mx-0">
         <div className="flex flex-col gap-2 min-w-max ">
           <Link href="/products" locale={router.locale}>
             <a
@@ -57,7 +57,7 @@ const CategoriesMenu = () => {
                       : ''
                   } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                 >
-                  {category.name}
+                  {category.name} {category.products.length}
                 </a>
               </Link>
             ))}

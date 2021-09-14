@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import NavbarMenu from './NavbarMenu'
 import LangMenu from './LangMenu'
 
 const Header = () => {
   const [screenWidth, setScreenWidth] = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     setScreenWidth(window.screen.width)
@@ -25,12 +28,16 @@ const Header = () => {
           />
         </div>
         <div className="mt-2 md:mr-5 lg:mr-11">
-          <Image
-            src="/images/logo.svg"
-            width={screenWidth < 765 ? '80' : '150'}
-            height={screenWidth < 765 ? '80' : '150'}
-            alt="Force Prefabricate"
-          />
+          <Link href="/" locale={router.locale}>
+            <a>
+              <Image
+                src="/images/logo.svg"
+                width={screenWidth < 765 ? '80' : '150'}
+                height={screenWidth < 765 ? '80' : '150'}
+                alt="Force Prefabricate"
+              />
+            </a>
+          </Link>
         </div>
       </div>
       <div className="px-1 py-1 flex  justify-between content-center  bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 md:pl-20">
