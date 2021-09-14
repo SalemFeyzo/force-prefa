@@ -13,7 +13,7 @@ const MyProgressBar = ({ isAnimating }) => {
       }}
     >
       <div
-        className="w-screen block top-0 h-1 z-50 bg-yellow-300 fixed "
+        className="w-full block top-0 h-1 z-50 bg-gradient-to-tr from-yellow-400 via-yellow-300 to-yellow-200 fixed "
         style={{
           marginLeft: `${(-1 + progress) * 100}%`,
           transition: `margin-left ${animationDuration}ms linear`,

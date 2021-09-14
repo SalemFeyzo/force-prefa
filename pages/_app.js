@@ -1,34 +1,28 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import NextApp from 'next/app'
 import { useRouter } from 'next/router'
 import { NextIntlProvider } from 'next-intl'
 import MyProgressBar from '../components/layout/navbar/MyProgressBar'
-import { useProgressStore } from '../store'
 import Layout from '../components/layout'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, messages, pageProps }) {
-  const setIsAnimating = useProgressStore(
-    (state) => state.setIsAnimating,
-  )
-  const isAnimating = useProgressStore((state) => state.isAnimating)
+  const [loading, setLoading] = useState(false)
+
   const router = useRouter()
+
   useEffect(() => {
-    const handleStart = () => {
-      setIsAnimating(true)
-    }
-    const handleStop = () => {
-      setIsAnimating(false)
-    }
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleStop)
-    router.events.on('routeChangeError', handleStop)
+    router.events.on('routeChangeStart', () => setLoading(true))
+    router.events.on('routeChangeComplete', () => setLoading(false))
+    router.events.on('routeChangeError', () => setLoading(false))
 
     return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleStop)
-      router.events.off('routeChangeError', handleStop)
+      router.events.off('routeChangeStart', () => setLoading(true))
+      router.events.off('routeChangeComplete', () =>
+        setLoading(false),
+      )
+      router.events.off('routeChangeError', () => setLoading(false))
     }
   }, [router])
 
@@ -36,7 +30,7 @@ function MyApp({ Component, messages, pageProps }) {
     <NextIntlProvider
       messages={{ ...messages, ...pageProps.messages }}
     >
-      <MyProgressBar isAnimating={isAnimating} />
+      <MyProgressBar isAnimating={loading} />
       <Layout>
         <Component {...pageProps} />
       </Layout>
