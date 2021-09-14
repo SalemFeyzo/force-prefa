@@ -20,7 +20,7 @@ const WhatsApp = () => {
     }
   }, [router])
   return (
-    <div className="block fixed right-14 bottom-10  ">
+    <div className="block fixed right-5 bottom-10  ">
       <a href={whatsAppUrl} target="_blank" rel="noreferrer">
         <Image
           src="/images/whatsapp.svg"
