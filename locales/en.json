@@ -2,6 +2,7 @@
   "navbar": {
     "home": "HOME",
     "products": "PRODUCTS",
+    "allProducts": "All Products",
     "projects": "PROJECTS",
     "about": "ABOUT US",
     "contact": "CONTACT US"

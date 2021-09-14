@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Transition } from '@headlessui/react'
+import { Transition, Popover } from '@headlessui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
+import CategoriesMenu from './CategoriesMenu'
 
 const NavbarMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,23 +26,21 @@ const NavbarMenu = () => {
                       router.asPath === '/'
                         ? 'bg-gray-700 text-white'
                         : ''
+                    } ${
+                      router.locale === 'ar' && 'ml-4'
                     } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                   >
                     {t('home')}
                   </a>
                 </Link>
-
-                <Link href="/products" locale={router.locale}>
-                  <a
-                    className={`${
-                      router.asPath === '/products'
-                        ? 'bg-gray-700 text-white'
-                        : ''
-                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
-                  >
-                    {t('products')}
-                  </a>
-                </Link>
+                <div
+                  className={`text-gray-300 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                >
+                  <Popover className="relative">
+                    <Popover.Button>{t('products')}</Popover.Button>
+                    <CategoriesMenu />
+                  </Popover>
+                </div>
 
                 <a
                   href="#"
@@ -138,18 +137,14 @@ const NavbarMenu = () => {
                   {t('home')}
                 </a>
               </Link>
-
-              <Link href="/products" locale={router.locale}>
-                <a
-                  className={`${
-                    router.asPath === '/products'
-                      ? 'bg-gray-700 text-white'
-                      : ''
-                  } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
-                >
-                  {t('products')}
-                </a>
-              </Link>
+              <div
+                className={` text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              >
+                <Popover className="relative">
+                  <Popover.Button>{t('products')}</Popover.Button>
+                  <CategoriesMenu />
+                </Popover>
+              </div>
 
               <a
                 href="#"
