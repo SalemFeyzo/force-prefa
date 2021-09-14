@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import NextApp from 'next/app'
 import { useRouter } from 'next/router'
 import { NextIntlProvider } from 'next-intl'
-import MyProgressBar from '../components/layout/navbar/MyProgressBar'
+import MyProgressBar from '../components/MyProgressBar'
+import WhatsApp from '../components/WhatsApp'
 import Layout from '../components/layout'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import '../styles/globals.css'
@@ -34,6 +35,7 @@ function MyApp({ Component, messages, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <WhatsApp />
     </NextIntlProvider>
   )
 }

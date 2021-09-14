@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       arial: ['Arial', 'Helvetica', 'sans-serif'],
+      cairo: ['Cairo', 'sans-serif'],
     },
     extend: {
       backgroundImage: (theme) => ({
