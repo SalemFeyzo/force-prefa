@@ -12,7 +12,7 @@ const CategoriesMenu = () => {
   useEffect(() => {
     const getGategories = async () => {
       const { data } = await axios.get(
-        `http://force-prefabricated.herokuapp.com/categories?_locale=${router.locale}`,
+        `https://force-prefabricated.herokuapp.com/categories?_locale=${router.locale}`,
       )
       setGategories(data)
     }
