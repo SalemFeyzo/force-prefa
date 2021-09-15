@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import ProductCard from '../../../components/ProductCard'
 
-const categorizedProducts = ({ category }) => {
+const CategorizedProducts = ({ category }) => {
   const router = useRouter()
   return (
     <div dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
@@ -22,7 +22,7 @@ const categorizedProducts = ({ category }) => {
   )
 }
 
-export default categorizedProducts
+export default CategorizedProducts
 
 export async function getServerSideProps(context) {
   const id = context.params.catId
