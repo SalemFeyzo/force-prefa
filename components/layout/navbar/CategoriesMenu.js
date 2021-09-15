@@ -47,12 +47,13 @@ const CategoriesMenu = () => {
             categories.map((category) => (
               <Link
                 key={category.id}
-                href={`/products/${category.id}`}
+                href={`/products/categories/${category.id}`}
                 locale={router.locale}
               >
                 <a
                   className={`${
-                    router.asPath === `/products/${category.id}`
+                    router.asPath ===
+                    `/products/categories/${category.id}`
                       ? 'bg-gray-700 text-white'
                       : ''
                   } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}

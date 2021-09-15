@@ -5,7 +5,7 @@ const ScrollTop = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const toggleVisibility = () => {
-    if (window.pageYOffset > 700) {
+    if (window.pageYOffset > 400) {
       setIsVisible(true)
     } else {
       setIsVisible(false)
@@ -31,7 +31,7 @@ const ScrollTop = () => {
         onClick={scrollToTop}
         className={classNames(
           isVisible ? 'opacity-100' : 'opacity-0',
-          'inline-flex items-center p-1 rounded-full shadow-sm text-white bg-yellow-400 transition-opacity hover:bg-yellow-500 focus:outline-none focus:ring-offset-2 focus:ring-yellow-400',
+          'inline-flex items-center p-1 rounded-full shadow-sm text-white bg-yellow-400 transition-opacity hover:bg-yellow-500  focus:outline-none focus:ring-offset-2 focus:ring-yellow-400',
         )}
       >
         <svg
