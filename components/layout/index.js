@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Header from './navbar/Header'
 import Footer from './Footer'
+import ScrollTop from './ScrollTop'
 
 const Layout = ({ children }) => {
   const router = useRouter()
@@ -20,6 +21,7 @@ const Layout = ({ children }) => {
           <main>
             <div className="h-full">{children}</div>
           </main>
+          <ScrollTop />
           <Footer />
         </div>
       </div>
