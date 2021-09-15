@@ -11,7 +11,13 @@ const Home = ({ products }) => {
         <div className="bg-factory-image  w-full h-full bg-cover bg-center ">
           <div className=" w-full h-full bg-gray-700 bg-opacity-75 flex justify-items-center">
             <div className="mx-auto bottom-0">
-              <a href="#featured">
+              <button
+                onClick={() =>
+                  document.getElementById('featured').scrollIntoView({
+                    behavior: 'smooth',
+                  })
+                }
+              >
                 <div>
                   <svg className="arrows">
                     <path className="a1" d="M0 0 L30 32 L60 0"></path>
@@ -25,7 +31,7 @@ const Home = ({ products }) => {
                     ></path>
                   </svg>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
         </div>
