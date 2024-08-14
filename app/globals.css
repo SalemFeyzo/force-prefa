@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #fcdf3b;
+  background: black;
+}
+
+::selection {
+  color: #fcdf3b;
+  background: black;
+}
+
+.arrows {
+  width: 60px;
+  height: 72px;
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  bottom: 20px;
+}
+
+.arrows path {
+  stroke: #c4d10f;
+  fill: transparent;
+  stroke-width: 4px;
+  animation: arrow 2s infinite;
+  -webkit-animation: arrow 2s infinite;
+}
+
+@keyframes arrow {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes arrow /*Safari and Chrome*/ {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.arrows path.a1 {
+  animation-delay: -1s;
+  -webkit-animation-delay: -1s; /* Safari 和 Chrome */
+}
+
+.arrows path.a2 {
+  animation-delay: -0.5s;
+  -webkit-animation-delay: -0.5s; /* Safari 和 Chrome */
+}
+
+.arrows path.a3 {
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s; /* Safari 和 Chrome */
+}
+
+.image-gallery-icon:hover {
+  color: #c4d10f !important;
+}
+.image-gallery-slide .image-gallery-image {
+  border-radius: 4px !important;
+}
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+  border-radius: 4px !important;
+}
+.image-gallery-thumbnail:hover {
+  border-color: #c4d10f !important;
+  border-radius: 4px !important;
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  border-color: #c4d10f !important;
+  border-radius: 4px !important;
+}

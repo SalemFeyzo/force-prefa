@@ -1,0 +1,38 @@
+{
+    "default": {
+        "navbar": {
+            "home": "الرئيسية",
+            "products": "منتجاتنا",
+            "projects": "مشاريعنا",
+            "about": "من نحن",
+            "contact": "إتصل بنا"
+        },
+        "openGraph": {
+            "title": "مثال على intl & Clerk التالي"
+        },
+        "pages": {
+            "about": {
+                "title": "معلومات عنا"
+            },
+            "dashboard": {
+                "title": "لوحة التحكم"
+            },
+            "sign-in": {
+                "title": "تسجيل الدخول"
+            },
+            "sign-up": {
+                "title": "التسجيل"
+            },
+            "home": {
+                "title": "الصفحة الرئيسية"
+            },
+            "notFound": {
+                "title": "لم يتم العثور على الصفحة (404)"
+            }
+        },
+        "rootLayoutMetadata": {
+            "description": "هذا مثال على استخدام next-intl & Clerk.",
+            "title": "مثال على intl & Clerk التالي"
+        }
+    }
+}
