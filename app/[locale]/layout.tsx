@@ -14,6 +14,7 @@ import "../globals.css";
 import Header from "@/components/header";
 import ScrollTop from "@/components/scroll-top";
 import Footer from "@/components/footer";
+import WhatsApp from "@/components/whats-app";
 
 const inter = Inter({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"] });
@@ -68,6 +69,7 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
                 <div className="h-screen">{children}</div>
               </main>
               <ScrollTop />
+              <WhatsApp />
               <Footer />
             </div>
           </div>

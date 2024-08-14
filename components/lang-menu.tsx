@@ -17,7 +17,7 @@ const LangMenu = () => {
   return (
     <div className="flex flex-row justify-between items-center ">
       <div
-        className={`p-1 ${
+        className={`p-1 cursor-pointer ${
           locale === "ar" ? "border-b-2 border-gray-800 " : ""
         }`}
         onClick={() => handleChange("ar")}
@@ -31,7 +31,9 @@ const LangMenu = () => {
         />
       </div>
       <div
-        className={`p-1 ${locale === "tr" ? "border-b-2 border-gray-800" : ""}`}
+        className={`p-1 cursor-pointer ${
+          locale === "tr" ? "border-b-2 border-gray-800" : ""
+        }`}
         onClick={() => handleChange("tr")}
       >
         <Image
@@ -43,7 +45,9 @@ const LangMenu = () => {
         />
       </div>
       <div
-        className={`p-1 ${locale === "en" ? "border-b-2 border-gray-800" : ""}`}
+        className={`p-1 cursor-pointer ${
+          locale === "en" ? "border-b-2 border-gray-800" : ""
+        }`}
         onClick={() => handleChange("en")}
       >
         <Image

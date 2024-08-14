@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Transition, Popover, PopoverButton } from "@headlessui/react";
-import Link from "next/link";
+import { useSelectedLayoutSegment } from "next/navigation";
+import { Transition } from "@headlessui/react";
 import { useLocale } from "next-intl";
-import { usePathname } from "@/lib/navigation";
+import { pathnames, Link } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
 
 const NavbarMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("default.navbar");
   const locale = useLocale();
-  const pathname = usePathname();
+  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : "/";
+
   return (
     <nav
       className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 "
@@ -22,7 +24,7 @@ const NavbarMenu = () => {
           <div className="flex items-center">
             <div className="hidden md:block">
               <div className="ml-0 flex items-baseline space-x-4">
-                <Link href="/" locale={locale}>
+                <Link href="/">
                   <div
                     className={`${
                       pathname === "/" ? "bg-gray-700 text-white" : ""
@@ -33,33 +35,50 @@ const NavbarMenu = () => {
                     {t("home")}
                   </div>
                 </Link>
-                <div
-                  className={`text-gray-300 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white px-3 py-2 rounded-md text-sm font-medium`}
-                >
-                  <Popover className="relative">
-                    <PopoverButton>{t("products")}</PopoverButton>
-                  </Popover>
-                </div>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {t("projects")}
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {t("about")}
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {t("contact")}
-                </a>
+                <Link href="/products">
+                  <div
+                    className={`${
+                      pathname === "/products" ? "bg-gray-700 text-white" : ""
+                    } ${
+                      locale === "ar" && "ml-4"
+                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  >
+                    {t("products")}
+                  </div>
+                </Link>
+                <Link href="/projects">
+                  <div
+                    className={`${
+                      pathname === "/projects" ? "bg-gray-700 text-white" : ""
+                    } ${
+                      locale === "ar" && "ml-4"
+                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  >
+                    {t("projects")}
+                  </div>
+                </Link>
+                <Link href="/about">
+                  <div
+                    className={`${
+                      pathname === "/about" ? "bg-gray-700 text-white" : ""
+                    } ${
+                      locale === "ar" && "ml-4"
+                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  >
+                    {t("about")}
+                  </div>
+                </Link>
+                <Link href="/contact-us">
+                  <div
+                    className={`${
+                      pathname === "/contact-us" ? "bg-gray-700 text-white" : ""
+                    } ${
+                      locale === "ar" && "ml-4"
+                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  >
+                    {t("contact")}
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -121,7 +140,7 @@ const NavbarMenu = () => {
       >
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link href="/" locale={locale}>
+            <Link href="/">
               <div
                 className={`${
                   pathname === "/" ? "bg-gray-700 text-white" : ""
@@ -130,30 +149,42 @@ const NavbarMenu = () => {
                 {t("home")}
               </div>
             </Link>
-            <div
-              className={` text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
-            >
-              <Popover className="relative">
-                <PopoverButton>{t("products")}</PopoverButton>
-              </Popover>
-            </div>
-
-            <a
-              href="#"
-              className={`${
-                pathname === "/projects" ? "bg-gray-700 text-white" : ""
-              } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
-            >
-              {t("projects")}
-            </a>
-            <a
-              href="#"
-              className={`${
-                pathname === "/about" ? "bg-gray-700 text-white" : ""
-              } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
-            >
-              {t("about")}
-            </a>
+            <Link href="/products">
+              <div
+                className={`${
+                  pathname === "/products" ? "bg-gray-700 text-white" : ""
+                } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              >
+                {t("products")}
+              </div>
+            </Link>
+            <Link href="/projects">
+              <div
+                className={`${
+                  pathname === "/projects" ? "bg-gray-700 text-white" : ""
+                } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              >
+                {t("projects")}
+              </div>
+            </Link>
+            <Link href="/about">
+              <div
+                className={`${
+                  pathname === "/about" ? "bg-gray-700 text-white" : ""
+                } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              >
+                {t("about")}
+              </div>
+            </Link>
+            <Link href="/contact-us">
+              <div
+                className={`${
+                  pathname === "/contact-us" ? "bg-gray-700 text-white" : ""
+                } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              >
+                {t("contact")}
+              </div>
+            </Link>
           </div>
         </div>
       </Transition>
