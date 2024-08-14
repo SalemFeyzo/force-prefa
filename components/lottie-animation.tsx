@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import axios from "axios";
 import dynamic from "next/dynamic";
 
 // https://lottie.host/443825fc-7bd7-43e2-8d59-57b70b77b6c9/5HPPkFKEC1.json
