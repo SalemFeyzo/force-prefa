@@ -65,7 +65,7 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
           <div className="bg-gradient-to-b from-gray-800 via-gray-500 to-gray-700 text-sm">
             <div className="bg-main-background-image w-full h-full bg-no-repeat bg-cover bg-center ">
               <Header />
-              <main>
+              <main className="bg-main-bg">
                 <div className="h-screen">{children}</div>
               </main>
               <ScrollTop />
