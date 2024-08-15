@@ -5,12 +5,12 @@ import { Product } from "@/types/product";
 const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Link href={{ pathname: "/products/[id]", params: { id: product.id } }}>
-      <div className="  border-4 border-black rounded-md bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 hover:bg-gradient-to-r hover:from-yellow-500 hover:via-yellow-200  hover:to-yellow-500">
+      <div className="rounded-md border-4 border-black bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 hover:bg-gradient-to-r hover:from-yellow-500 hover:via-yellow-200 hover:to-yellow-500">
         <Image
           src={product.mainImage}
           width={700}
           height={400}
-          className="object-fill inset-0 mt-1"
+          className="inset-0 mt-1 object-fill"
           alt={product.title}
         />
         <div className="p-2 font-bold">

@@ -41,7 +41,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(
-      process.env.SITE_URL ? process.env.SITE_URL : "http://localhost:3000"
+      process.env.SITE_URL ? process.env.SITE_URL : "http://localhost:3000",
     ),
     title: t("title"),
     description: t("description"),
@@ -63,7 +63,7 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
       <NextIntlClientProvider locale={locale} messages={messages}>
         <body className={locale === "ar" ? cairo.className : inter.className}>
           <div className="bg-gradient-to-b from-gray-800 via-gray-500 to-gray-700 text-sm">
-            <div className="bg-main-background-image w-full h-full bg-no-repeat bg-cover bg-center ">
+            <div className="bg-main-background-image h-full w-full bg-cover bg-center bg-no-repeat">
               <Header />
               <main className="bg-main-bg">
                 <div className="h-screen">{children}</div>

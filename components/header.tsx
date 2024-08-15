@@ -18,7 +18,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className=" bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900">
+    <div className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900">
       <div className="flex flex-row justify-between">
         <div>
           <Image
@@ -40,7 +40,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="px-1 py-1 flex  justify-between content-center  bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 md:pl-20">
+      <div className="flex content-center justify-between bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 px-1 py-1 md:pl-20">
         <LangMenu />
       </div>
       <NavbarMenu />

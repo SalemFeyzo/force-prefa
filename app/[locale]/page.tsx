@@ -9,10 +9,12 @@ export default function Home({
 }) {
   unstable_setRequestLocale(locale);
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center bg-gray-800 text-white h-2/5">
-      <div className="h-full ml-2 mr-2">Section</div>
-      <div className="h-full ml-2 mr-2">
-        <LottieAnimation />
+    <div className="h-2/5 bg-gray-800 text-white">
+      <div className="flex h-full w-full flex-col items-center justify-between md:mx-5 md:flex-row">
+        <div className="">Hello World!</div>
+        <div>
+          <LottieAnimation />
+        </div>
       </div>
     </div>
   );

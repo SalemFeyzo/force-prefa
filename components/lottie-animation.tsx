@@ -9,7 +9,7 @@ const DotLottieReact = dynamic(
     import("@lottiefiles/dotlottie-react").then((mod) => mod.DotLottieReact),
   {
     ssr: false,
-  }
+  },
 );
 
 const LottieAnimation = () => {

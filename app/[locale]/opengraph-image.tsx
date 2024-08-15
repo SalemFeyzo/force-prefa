@@ -30,6 +30,6 @@ export default async function Image({ params: { locale } }: Props) {
         {t("title")}
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }
