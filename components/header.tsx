@@ -27,6 +27,8 @@ const Header = () => {
             height={screenWidth < 765 ? 100 : 130}
             className={`${locale === "ar" && "rotate-90"}`}
             alt="leftUpCorner"
+            // placeholder="blur" // "empty" | "blur" | "data:image/..."
+            priority={true} // {false} | {true}
           />
         </div>
         <div className="mt-2 md:mr-5 lg:mr-11">
@@ -40,7 +42,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="flex content-center justify-between bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 px-1 py-1 md:pl-20">
+      <div className="flex content-center justify-between bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 px-1 py-1">
         <LangMenu />
       </div>
       <NavbarMenu />

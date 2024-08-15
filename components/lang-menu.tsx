@@ -1,7 +1,8 @@
 "use client";
-import Image from "next/image";
+
 import { useLocale } from "next-intl";
 import { useParams } from "next/navigation";
+import Flag from "react-world-flags";
 import { usePathname, useRouter } from "@/lib/navigation";
 
 const LangMenu = () => {
@@ -22,13 +23,7 @@ const LangMenu = () => {
         }`}
         onClick={() => handleChange("ar")}
       >
-        <Image
-          src="/images/ar.svg"
-          width={25}
-          height={13}
-          className="object-cover"
-          alt="ar"
-        />
+        <Flag code="sa" height={20} width={30} />
       </div>
       <div
         className={`cursor-pointer p-1 ${
@@ -36,13 +31,7 @@ const LangMenu = () => {
         }`}
         onClick={() => handleChange("tr")}
       >
-        <Image
-          src="/images/tr.svg"
-          width={25}
-          height={13}
-          className="object-cover"
-          alt="tr"
-        />
+        <Flag code="tr" height={20} width={30} />
       </div>
       <div
         className={`cursor-pointer p-1 ${
@@ -50,13 +39,7 @@ const LangMenu = () => {
         }`}
         onClick={() => handleChange("en")}
       >
-        <Image
-          src="/images/en.svg"
-          width={25}
-          height={20}
-          className="object-cover"
-          alt="en"
-        />
+        <Flag code="us" height={20} width={30} />
       </div>
     </div>
   );

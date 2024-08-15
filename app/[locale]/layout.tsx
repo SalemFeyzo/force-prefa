@@ -10,11 +10,12 @@ import {
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
 import { locales } from "@/lib/navigation";
-import "../globals.css";
 import Header from "@/components/header";
 import ScrollTop from "@/components/scroll-top";
 import Footer from "@/components/footer";
 import WhatsApp from "@/components/whats-app";
+
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"] });
@@ -66,7 +67,7 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
             <div className="bg-main-background-image h-full w-full bg-cover bg-center bg-no-repeat">
               <Header />
               <main className="bg-main-bg">
-                <div className="h-screen">{children}</div>
+                <div className="h-full">{children}</div>
               </main>
               <ScrollTop />
               <WhatsApp />
