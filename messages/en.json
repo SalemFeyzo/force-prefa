@@ -1,5 +1,9 @@
 {
     "default": {
+        "hero": {
+            "text": "Hello",
+            "animated-text": "World!"
+        },
         "navbar": {
             "home": "HOME",
             "products": "PRODUCTS",

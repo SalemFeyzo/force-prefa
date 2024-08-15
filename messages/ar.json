@@ -1,5 +1,9 @@
 {
     "default": {
+        "hero": {
+            "text": "مرحباً",
+            "animated-text": "بالعالم!"
+        },
         "navbar": {
             "home": "الرئيسية",
             "products": "منتجاتنا",

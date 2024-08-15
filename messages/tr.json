@@ -1,5 +1,9 @@
 {
     "default": {
+        "hero": {
+            "text": "Merhaba",
+            "animated-text": "Dünya!"
+        },
         "navbar": {
             "home": "ANASAYFA",
             "products": "ÜRÜNLER",
