@@ -20,9 +20,7 @@ export const contentType = "image/png";
 
 export default async function Image({ params: { locale } }: Props) {
   const t = await getTranslations({ locale, namespace: "default.openGraph" });
-  const logoData = await readFile(
-    join(process.cwd(), "public/images/logo.png"),
-  );
+  const logoData = await readFile(join(process.cwd(), "assets/logo.png"));
   const logoSrc = Uint8Array.from(logoData).buffer;
 
   const text =
