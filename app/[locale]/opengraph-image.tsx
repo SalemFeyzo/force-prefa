@@ -18,14 +18,16 @@ export const size = {
 
 export default async function Image({ params: { locale } }: Props) {
   const t = await getTranslations({ locale, namespace: "default.openGraph" });
-  const logoData = await readFile(join(process.cwd(), "/public/logo.png"));
+  const logoData = await readFile(
+    join(process.cwd(), "/public/images/logo.png"),
+  );
   const logoSrc = Uint8Array.from(logoData).buffer;
   return new ImageResponse(
     (
       <div
         style={{
           marginTop: 0,
-          background: "black",
+          background: "#1a202c",
           color: "white",
           width: "100%",
           height: "100%",
