@@ -16,6 +16,8 @@ export const size = {
   height: 630,
 };
 
+export const contentType = "image/png";
+
 export default async function Image({ params: { locale } }: Props) {
   const t = await getTranslations({ locale, namespace: "default.openGraph" });
   const logoData = await readFile(
