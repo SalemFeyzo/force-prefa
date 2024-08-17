@@ -24,11 +24,16 @@ export default async function Image({ params: { locale } }: Props) {
     join(process.cwd(), "/public/images/logo.png"),
   );
   const logoSrc = Uint8Array.from(logoData).buffer;
+
+  const text =
+    locale === "ar" ? t("name").split(" ").reverse().join(" ") : t("name");
+
   return new ImageResponse(
     (
       <div
         style={{
           marginTop: 0,
+          fontSize: "20px",
           background: "#1a202c",
           color: "white",
           width: "100%",
@@ -39,17 +44,13 @@ export default async function Image({ params: { locale } }: Props) {
           justifyContent: "center",
         }}
       >
-        <h1
-          style={{
-            fontSize: "20px",
-          }}
-        >
-          {t("name")}
-        </h1>
         {/* @ts-ignore */}
         <img src={logoSrc} height={300} width={300} alt={t("name")} />
+        <h1 tw="font-mono font-bold	">{text}</h1>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+    },
   );
 }
