@@ -37,7 +37,8 @@
         },
         "rootLayoutMetadata": {
             "description": "Force Prefabricated Houses",
-            "title": "Force Prefabricated Houses"
+            "title": "Force Prefabricated Houses",
+            "name": "Force Prefabricated"
         }
     }
 }

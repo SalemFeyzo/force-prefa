@@ -37,7 +37,8 @@
         },
         "rootLayoutMetadata": {
             "description": "Force Prefabrik Evler",
-            "title": "Force Prefabrik Evler"
+            "title": "Force Prefabrik Evler",
+            "name": "Force Prefabrik"
         }
     }
 }
