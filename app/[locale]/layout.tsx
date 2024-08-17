@@ -42,7 +42,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(
-      process.env.SITE_URL ? process.env.SITE_URL : "http://localhost:3000",
+      process.env.SITE_URL ? process.env.SITE_URL : "http://localhost:3000/",
     ),
     title: t("title"),
     description: t("description"),
