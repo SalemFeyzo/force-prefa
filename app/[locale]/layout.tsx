@@ -50,18 +50,22 @@ export async function generateMetadata({
       card: "summary_large_image",
     },
     openGraph: {
+      title: t("title"),
+      description: t("description"),
       siteName: t("name"),
+      url: new URL(
+        process.env.SITE_URL ? process.env.SITE_URL : "http://localhost:3000/",
+      ),
       images: [
         {
-          url: "https://nextjs.org/og.png",
+          url: new URL(
+            process.env.SITE_URL
+              ? process.env.SITE_URL + "logo.png"
+              : "http://localhost:3000/logo.png",
+          ),
           width: 800,
           height: 600,
-        },
-        {
-          url: "https://nextjs.org/og-alt.png",
-          width: 1800,
-          height: 1600,
-          alt: "My custom alt",
+          alt: t("name"),
         },
       ],
       locale: locale,
