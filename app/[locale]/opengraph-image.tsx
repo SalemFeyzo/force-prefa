@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { join } from "node:path";
 import { readFile } from "node:fs/promises";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 type Props = {
   params: {
