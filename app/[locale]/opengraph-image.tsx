@@ -1,15 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { ImageResponse } from "next/og";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { join } from "node:path";
 import { readFile } from "node:fs/promises";
+
+import { locales } from "@/lib/navigation";
 
 type Props = {
   params: {
     locale: string;
   };
 };
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export const size = {
   width: 1200,
@@ -19,6 +25,7 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "default.openGraph" });
   const logoData = await readFile(join(process.cwd(), "/assets/logo.png"));
   const logoSrc = Uint8Array.from(logoData).buffer;
