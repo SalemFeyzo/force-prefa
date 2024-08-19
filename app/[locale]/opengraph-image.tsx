@@ -2,8 +2,8 @@
 
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
-import { join } from "node:path";
-import { readFile } from "node:fs/promises";
+// import { join } from "node:path";
+// import { readFile } from "node:fs/promises";
 
 export const runtime = "nodejs";
 
@@ -22,8 +22,8 @@ export const contentType = "image/png";
 
 export default async function Image({ params: { locale } }: Props) {
   const t = await getTranslations({ locale, namespace: "default.openGraph" });
-  const logoData = await readFile(join(process.cwd(), "/assets/logo.png"));
-  const logoSrc = Uint8Array.from(logoData).buffer;
+  // const logoData = await readFile(join(process.cwd(), "/assets/logo.png"));
+  // const logoSrc = Uint8Array.from(logoData).buffer;
 
   const text =
     locale === "ar" ? t("name").split(" ").reverse().join(" ") : t("name");
@@ -45,8 +45,8 @@ export default async function Image({ params: { locale } }: Props) {
         }}
       >
         {/* @ts-ignore */}
-        <img src={logoSrc} height={300} width={300} alt={t("name")} />
-        <h1 tw="font-mono font-bold	">{text}</h1>
+        {/* <img src={logoSrc} height={300} width={300} alt={t("name")} /> */}
+        <h1 tw="font-bold">{text}</h1>
       </div>
     ),
     {
