@@ -46,9 +46,26 @@ export async function generateMetadata({
     ),
     title: t("title"),
     description: t("description"),
-    applicationName: t("name"),
     twitter: {
       card: "summary_large_image",
+    },
+    openGraph: {
+      siteName: t("name"),
+      images: [
+        {
+          url: "https://nextjs.org/og.png",
+          width: 800,
+          height: 600,
+        },
+        {
+          url: "https://nextjs.org/og-alt.png",
+          width: 1800,
+          height: 1600,
+          alt: "My custom alt",
+        },
+      ],
+      locale: locale,
+      type: "website",
     },
     other: {
       currentYear: formatter.dateTime(now, { year: "numeric" }),
