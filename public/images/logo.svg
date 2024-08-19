@@ -7,33 +7,8 @@
    viewBox="0 0 79.374996 79.375002"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (1:1.1+202105261517+ce6663b3b7)"
-   sodipodi:docname="logo.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#999999"
-     borderopacity="1"
-     inkscape:pageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="px"
-     showgrid="false"
-     units="px"
-     width="300px"
-     inkscape:zoom="0.6727633"
-     inkscape:cx="110.73731"
-     inkscape:cy="74.320344"
-     inkscape:window-width="1366"
-     inkscape:window-height="719"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs2">
     <linearGradient
@@ -148,8 +123,6 @@
     </linearGradient>
   </defs>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
      id="layer1">
     <g
        id="g82160"
@@ -205,14 +178,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:5.13626px;line-height:1.25;font-family:sans-serif;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:0.128407"
-       x="7.374176"
+       x="8.2304916"
        y="89.626648"
        id="text855"
        transform="scale(1.2359154,0.80911687)"><tspan
-         sodipodi:role="line"
          id="tspan853"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif Gurmukhi';-inkscape-font-specification:'Noto Serif Gurmukhi Bold';fill:#ececec;stroke-width:0.128407"
-         x="7.374176"
+         x="8.2304916"
          y="89.626648">FORCE PREFABRIK</tspan></text>
   </g>
 </svg>
