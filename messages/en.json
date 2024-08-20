@@ -17,7 +17,33 @@
         },
         "pages": {
             "about": {
-                "title": "About Us"
+                "about-us": {
+                    "title": "About Us:",
+                    "p1": "Force Prefabricated Company, a pioneer in the manufacture of prefabricated houses, was established in 2021 and has specialized since its inception in general contracting and manufacturing prefabricated houses in Turkey and abroad.",
+                    "p2": "The company was rebuilt and restored again after the devastating earthquake in Turkey in 2023 to keep pace with the rapid development in prefabricated construction technologies."
+                },
+                "vision": {
+                    "title": "Our vision:",
+                    "p": "To reach a leading position in the field of prefabricated houses manufacturing by providing engineering solutions with effective value, while committing to the efficiency of the services we provide to all our customers, and to constantly develop our services and businesses, while training the work team according to the highest quality standards."
+                },
+                "message": {
+                    "title": "Our Message:",
+                    "p": "Always strive to create the high trust that customers resort to in order to implement all general contracting and finishing works. As we look forward to always being trusted by customers and benefiting from global technological developments to guarantee our customers quality of implementation and speed of delivery."
+                },
+                "goal": {
+                    "title": "Our Goal:",
+                    "p": "We at Force Prefabrik have a strong goal of building long-term partnerships with many of our clients inside and outside Turkey. We do our best to achieve this goal to meet the current and future aspirations and needs of our clients. We also proceed according to an organized plan through which we seek to expand our activities."
+                },
+                "quality-policy": {
+                    "title": "Quality and Safety Policy:",
+                    "p": "Quality and safety are among the most important elements that we place among our priorities that we cannot compromise on. Also, over the past years of providing work and implementing prefabricated homes, we have been working on improving the quality in all our work with an excellent quality and safety system that keeps pace with the ongoing challenges and is in line with the different requirements of customers."
+                },
+                "services": {
+                    "title": "Our services:",
+                    "p1": "We provide everything related to prefabricated house works. These works that we provide include implementing and manufacturing prefabricated houses from start to finish.",
+                    "p2": "Implementing architectural and construction plans.",
+                    "p3": "We have highly qualified and experienced engineers in making architectural and construction drawings, in addition to the full ability to implement these drawings with great accuracy and at the best possible cost."
+                }
             },
             "dashboard": {
                 "title": "Dashboard"

@@ -17,7 +17,33 @@
         },
         "pages": {
             "about": {
-                "title": "About Us"
+                "about-us": {
+                    "title": "Hakkımızda:",
+                    "p1": "Prefabrik ev imalatında öncü olan Force Prefabrik Şirketi, 2021 yılında kurulmuş olup, kurulduğu günden bu yana Türkiye ve yurtdışında genel müteahhitlik ve prefabrik ev imalatı konusunda uzmanlaşmıştır.",
+                    "p2": "Şirket, 2023 yılında Türkiye'de yaşanan yıkıcı depremden sonra prefabrik inşaat teknolojilerindeki hızlı gelişmeye ayak uydurmak için yeniden inşa edilmiş ve restore edilmiştir."
+                },
+                "vision": {
+                    "title": "Vizyonumuz:",
+                    "p": "Mühendislik çözümlerini etkin değerle sunarak, tüm müşterilerimize sunduğumuz hizmetlerin verimliliğini taahhüt ederek, prefabrik ev imalatı alanında lider bir konuma ulaşmak ve çalışma ekibini en yüksek kalite standartlarına göre eğitirken, hizmetlerimizi ve işlerimizi sürekli geliştirmek."
+                },
+                "message": {
+                    "title": "Mesajımız:",
+                    "p": "Her zaman müşterilerin tüm genel müteahhitlik ve bitirme işlerini uygulamak için başvurdukları yüksek güveni yaratmaya çalışıyoruz. Müşterilerimiz tarafından her zaman güvenilmeyi ve müşterilerimize uygulama kalitesini ve teslimat hızını garanti etmek için küresel teknolojik gelişmelerden yararlanmayı dört gözle bekliyoruz."
+                },
+                "goal": {
+                    "title": "Hedefimiz:",
+                    "p": "Force Prefabrik olarak, Türkiye içinde ve dışında birçok müşterimizle uzun vadeli ortaklıklar kurma konusunda güçlü bir hedefimiz var. Müşterilerimizin mevcut ve gelecekteki isteklerini ve ihtiyaçlarını karşılamak için bu hedefe ulaşmak için elimizden gelenin en iyisini yapıyoruz. Ayrıca faaliyetlerimizi genişletmeyi amaçladığımız organize bir plana göre ilerliyoruz."
+                },
+                "quality-policy": {
+                    "title": "Kalite ve Güvenlik Politikası:",
+                    "p": "Kalite ve güvenlik, taviz veremeyeceğimiz önceliklerimiz arasında yer alan en önemli unsurlardandır. Ayrıca, son yıllarda prefabrik evler sağlama ve uygulama konusunda, devam eden zorluklarla başa çıkabilen ve müşterilerin farklı gereksinimlerine uygun mükemmel bir kalite ve güvenlik sistemiyle tüm çalışmalarımızda kaliteyi iyileştirmek için çalışıyoruz."
+                },
+                "services": {
+                    "title": "Hizmetlerimiz:",
+                    "p1": "Prefabrik ev işleriyle ilgili her şeyi sağlıyoruz. Sağladığımız bu işler, prefabrik evlerin baştan sona uygulanmasını ve üretilmesini içerir.",
+                    "p2": "Mimari ve inşaat planlarının uygulanması.",
+                    "p3": "Mimari ve inşaat çizimleri yapma konusunda son derece kalifiye ve deneyimli mühendislerimiz var, ayrıca bu çizimleri büyük bir doğrulukla ve mümkün olan en iyi maliyetle uygulama konusunda tam kapasiteye sahibiz."
+                }
             },
             "dashboard": {
                 "title": "Dashboard"
