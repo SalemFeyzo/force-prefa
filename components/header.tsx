@@ -1,10 +1,28 @@
+"use client";
 import { Link } from "@/lib/navigation";
 import NavbarMenu from "./navbar-menu";
 import LangMenu from "./lang-menu";
 import Logo from "./logo";
 import { useLocale } from "next-intl";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.scrollY > 50) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
   return (
     <div className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900">
       <div className="flex flex-row justify-between">
@@ -18,10 +36,14 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="flex content-center justify-between bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 px-1 py-1">
-        <LangMenu />
+      <div
+        className={`${isVisible ? "fixed top-0 w-full transition-opacity" : ""}`}
+      >
+        <div className="flex content-center justify-between bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 px-1 py-1">
+          <LangMenu />
+        </div>
+        <NavbarMenu isVisible={isVisible} />
       </div>
-      <NavbarMenu />
     </div>
   );
 };

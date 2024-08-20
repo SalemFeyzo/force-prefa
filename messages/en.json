@@ -5,6 +5,7 @@
             "animated-text": "World!"
         },
         "navbar": {
+            "name": "FORCE PREFABRIK",
             "home": "HOME",
             "products": "PRODUCTS",
             "projects": "PROJECTS",

@@ -6,8 +6,9 @@ import { Transition } from "@headlessui/react";
 import { useLocale } from "next-intl";
 import { Link } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
+import SmallLogo from "./small-logo";
 
-const NavbarMenu = () => {
+const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("default.navbar");
   const locale = useLocale();
@@ -23,66 +24,84 @@ const NavbarMenu = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="hidden md:block">
-              <div className="ml-0 flex items-baseline space-x-4">
-                <Link href="/">
-                  <div
-                    className={`${
-                      pathname === "/" ? "bg-gray-700 text-white" : ""
-                    } ${
-                      locale === "ar" && "ml-4"
-                    } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
-                  >
-                    {t("home")}
+              <div className="flex flex-row items-center justify-between gap-9">
+                {isVisible && (
+                  <div className="flex flex-row items-center justify-center">
+                    <SmallLogo />
+                    <span className="font-extrabold text-white">
+                      {t("name")}
+                    </span>
                   </div>
-                </Link>
-                <Link href="/products">
-                  <div
-                    className={`${
-                      pathname === "/products" ? "bg-gray-700 text-white" : ""
-                    } ${
-                      locale === "ar" && "ml-4"
-                    } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
-                  >
-                    {t("products")}
-                  </div>
-                </Link>
-                <Link href="/projects">
-                  <div
-                    className={`${
-                      pathname === "/projects" ? "bg-gray-700 text-white" : ""
-                    } ${
-                      locale === "ar" && "ml-4"
-                    } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
-                  >
-                    {t("projects")}
-                  </div>
-                </Link>
-                <Link href="/about">
-                  <div
-                    className={`${
-                      pathname === "/about" ? "bg-gray-700 text-white" : ""
-                    } ${
-                      locale === "ar" && "ml-4"
-                    } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
-                  >
-                    {t("about")}
-                  </div>
-                </Link>
-                <Link href="/contact-us">
-                  <div
-                    className={`${
-                      pathname === "/contact-us" ? "bg-gray-700 text-white" : ""
-                    } ${
-                      locale === "ar" && "ml-4"
-                    } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
-                  >
-                    {t("contact")}
-                  </div>
-                </Link>
+                )}
+                <div className="ml-0 flex items-baseline space-x-4">
+                  <Link href="/">
+                    <div
+                      className={`${
+                        pathname === "/" ? "bg-gray-700 text-white" : ""
+                      } ${
+                        locale === "ar" && "ml-4"
+                      } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
+                    >
+                      {t("home")}
+                    </div>
+                  </Link>
+                  <Link href="/products">
+                    <div
+                      className={`${
+                        pathname === "/products" ? "bg-gray-700 text-white" : ""
+                      } ${
+                        locale === "ar" && "ml-4"
+                      } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
+                    >
+                      {t("products")}
+                    </div>
+                  </Link>
+                  <Link href="/projects">
+                    <div
+                      className={`${
+                        pathname === "/projects" ? "bg-gray-700 text-white" : ""
+                      } ${
+                        locale === "ar" && "ml-4"
+                      } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
+                    >
+                      {t("projects")}
+                    </div>
+                  </Link>
+                  <Link href="/about">
+                    <div
+                      className={`${
+                        pathname === "/about" ? "bg-gray-700 text-white" : ""
+                      } ${
+                        locale === "ar" && "ml-4"
+                      } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
+                    >
+                      {t("about")}
+                    </div>
+                  </Link>
+                  <Link href="/contact-us">
+                    <div
+                      className={`${
+                        pathname === "/contact-us"
+                          ? "bg-gray-700 text-white"
+                          : ""
+                      } ${
+                        locale === "ar" && "ml-4"
+                      } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
+                    >
+                      {t("contact")}
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-          <div className="-mr-2 flex md:hidden">
+          <div className="-mr-2 flex w-full flex-row items-center justify-between md:hidden">
+            {isVisible && (
+              <div className="flex flex-row items-center justify-center">
+                <SmallLogo />
+                <span className="font-extrabold text-white">{t("name")}</span>
+              </div>
+            )}
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
