@@ -1,7 +1,5 @@
-import FeaturedSection from "@/components/fetured-section";
+import FeaturedSection from "@/components/featured-section";
 import HeroSection from "@/components/hero-section";
-import LottieAnimation from "@/components/lottie-animation";
-import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 export default function Home({
@@ -13,9 +11,6 @@ export default function Home({
   return (
     <div className="flex h-full flex-col gap-2">
       <HeroSection />
-      <FeaturedSection />
-      <FeaturedSection />
-      <FeaturedSection />
       <FeaturedSection />
       <FeaturedSection />
       <FeaturedSection />
