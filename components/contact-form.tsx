@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import validator from "validator";
+import emailjs from "@emailjs/browser";
 import { Button, Field, Label, Description, Input } from "@headlessui/react";
 
 const formSchema = z.object({
@@ -19,10 +20,9 @@ export default function ContactForm() {
   const {
     register,
     handleSubmit,
-    control,
     setError,
-
-    formState: { isSubmitting, errors, isValidating, isValid },
+    reset,
+    formState: { isSubmitting, errors, isSubmitSuccessful, isSubmitted },
   } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,11 +36,21 @@ export default function ContactForm() {
   // 2. Define a submit handler.
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log(data);
+      const { text, status } = await emailjs.sendForm(
+        "service_c7v5xpo",
+        "template_lin934i",
+        "#contact-form",
+        {
+          publicKey: "yAhvcYE1nouQhq-nV",
+          limitRate: { throttle: 3 },
+        },
+      );
+      if (text === "OK" || status === 200) {
+        reset();
+      }
     } catch (error) {
       setError("root", {
-        message: "This email is already taken",
+        message: String(error),
       });
     }
   };
@@ -49,6 +59,7 @@ export default function ContactForm() {
       <h1 className="border-b-2 pb-2 text-xl font-bold">Contact Form</h1>
       <br />
       <form
+        id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
         className="flex w-full flex-col items-start justify-center gap-4 text-white"
       >
@@ -141,6 +152,10 @@ export default function ContactForm() {
         </Button>
         <span className="text-red-500">
           {errors.root && errors.root.message}
+        </span>
+        <span className="text-green-700">
+          {(isSubmitted || isSubmitSuccessful) &&
+            "Sent successfully, thank you. "}
         </span>
       </form>
     </div>
