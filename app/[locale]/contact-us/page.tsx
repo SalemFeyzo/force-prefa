@@ -25,7 +25,9 @@ export default function ContactUs({
           <br />
           <div className="flex items-baseline justify-start gap-2">
             <h2 className="text-lg">Email:</h2>
-            <a href="email:info@form-prefabrik.com">info@force-prefabrik.com</a>
+            <a href="mailto:info@form-prefabrik.com">
+              info@force-prefabrik.com
+            </a>
           </div>
           <br />
           <div className="flex items-baseline justify-start gap-2">
