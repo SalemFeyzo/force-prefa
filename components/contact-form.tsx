@@ -6,6 +6,7 @@ import { z } from "zod";
 import validator from "validator";
 import emailjs from "@emailjs/browser";
 import { Button, Field, Label, Description, Input } from "@headlessui/react";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(3),
@@ -16,13 +17,14 @@ const formSchema = z.object({
 });
 
 export default function ContactForm() {
+  const [success, setSuccess] = useState<boolean>(false);
   // 1. Define your form.
   const {
     register,
     handleSubmit,
     setError,
     reset,
-    formState: { isSubmitting, errors, isSubmitSuccessful, isSubmitted },
+    formState: { isSubmitting, errors },
   } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,6 +48,7 @@ export default function ContactForm() {
         },
       );
       if (text === "OK" || status === 200) {
+        setSuccess(true);
         reset();
       }
     } catch (error) {
@@ -154,8 +157,7 @@ export default function ContactForm() {
           {errors.root && errors.root.message}
         </span>
         <span className="text-green-700">
-          {(isSubmitted || isSubmitSuccessful) &&
-            "Sent successfully, thank you. "}
+          {success && "Sent successfully, thank you. "}
         </span>
       </form>
     </div>
