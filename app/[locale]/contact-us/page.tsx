@@ -1,5 +1,13 @@
 import ContactForm from "@/components/contact-form";
 import { unstable_setRequestLocale } from "next-intl/server";
+import {
+  FaXTwitter,
+  FaFacebook,
+  FaTelegram,
+  FaYoutube,
+  FaWhatsapp,
+  FaTiktok,
+} from "react-icons/fa6";
 
 export default function ContactUs({
   params: { locale },
@@ -25,15 +33,40 @@ export default function ContactUs({
           <br />
           <div className="flex items-baseline justify-start gap-2">
             <h2 className="text-lg">Email:</h2>
-            <a href="mailto:info@form-prefabrik.com">
-              info@force-prefabrik.com
-            </a>
+            <a href="mailto:info@form-prefabrik.com">info@forceprefabrik.com</a>
           </div>
           <br />
           <div className="flex items-baseline justify-start gap-2">
             <h2 className="text-lg">Phone Number:</h2>
             <a href="tel:+905526100173" dir="ltr">
               +90 552 610 01 73
+            </a>
+          </div>
+          <br />
+          <div className="flex items-center justify-start gap-2 md:flex-row">
+            <h2 className="text-lg">Social Links:</h2>
+            <a
+              href="https://wa.me/905526100173"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaWhatsapp className="h-7 w-7 text-green-500" />
+            </a>
+            <a href="https://telegram.com/" target="_blank" rel="noreferrer">
+              <FaTelegram className="h-7 w-7 text-blue-500" />
+            </a>
+            <a href="https://facebook.com/" target="_blank" rel="noreferrer">
+              <FaFacebook className="h-7 w-7 text-blue-700" />
+            </a>
+            <a href="https://x.com/" target="_blank" rel="noreferrer">
+              <FaXTwitter className="h-7 w-7 text-black" />
+            </a>
+
+            <a href="https://youtube.com/" target="_blank" rel="noreferrer">
+              <FaYoutube className="h-10 w-10 text-red-700" />
+            </a>
+            <a href="https://tiktok.com/" target="_blank" rel="noreferrer">
+              <FaTiktok className="h-7 w-7 text-gray-950" />
             </a>
           </div>
         </div>
