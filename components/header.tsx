@@ -3,11 +3,12 @@ import { Link } from "@/lib/navigation";
 import NavbarMenu from "./navbar-menu";
 import LangMenu from "./lang-menu";
 import Logo from "./logo";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("default.navbar");
 
   const toggleVisibility = () => {
     if (window.scrollY > 50) {
@@ -28,10 +29,13 @@ const Header = () => {
       <div className="flex flex-row justify-between">
         <CornerDecoration />
 
-        <div className="mt-2 md:mx-5 lg:mx-11">
+        <div className="md:mx-5 lg:mx-11">
           <Link href="/">
-            <div>
-              <Logo />
+            <div className="flex flex-col items-center justify-end p-2">
+              <Logo width={150} height={150} className="relative" />
+              <span className="absolute font-extrabold text-white">
+                {t("name")}
+              </span>
             </div>
           </Link>
         </div>

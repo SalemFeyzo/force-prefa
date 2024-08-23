@@ -1,10 +1,19 @@
-function Logo() {
+function Logo({
+  width,
+  height,
+  className,
+}: {
+  width: number;
+  height: number;
+  className?: string;
+}) {
   return (
     <svg
+      className={className}
       direction="ltr"
       xmlns="http://www.w3.org/2000/svg"
-      width="150"
-      height="150"
+      width={width}
+      height={height}
       version="1.1"
       viewBox="0 0 79.375 79.375"
     >
@@ -125,36 +134,6 @@ function Logo() {
             </g>
           </g>
         </g>
-        <text
-          xmlSpace="preserve"
-          style={{ lineHeight: "1.25" }}
-          x="8.23"
-          y="89.627"
-          fill="#ececec"
-          fillOpacity="1"
-          stroke="none"
-          strokeWidth="0.128"
-          fontFamily="sans-serif"
-          fontSize="5.136"
-          fontStyle="normal"
-          fontWeight="bold"
-          transform="scale(1.23592 .80912)"
-        >
-          <tspan
-            style={{}}
-            x="8.23"
-            y="89.627"
-            fill="#ececec"
-            strokeWidth="0.128"
-            fontFamily="Noto Serif Gurmukhi"
-            fontStretch="normal"
-            fontStyle="normal"
-            fontVariant="normal"
-            fontWeight="bold"
-          >
-            FORCE PREFABRIK
-          </tspan>
-        </text>
       </g>
     </svg>
   );

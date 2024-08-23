@@ -37,6 +37,7 @@ export default getRequestConfig(async ({ locale }) => {
       ) {
         // Do nothing, this error is triggered on purpose
       } else {
+        // eslint-disable-next-line no-console
         console.error(JSON.stringify(error.message));
       }
     },

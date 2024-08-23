@@ -6,7 +6,7 @@ import { Transition } from "@headlessui/react";
 import { useLocale } from "next-intl";
 import { Link } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
-import SmallLogo from "./small-logo";
+import Logo from "./logo";
 
 const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
               <div className="flex flex-row items-center justify-between gap-9">
                 {isVisible && (
                   <div className="flex flex-row items-center justify-center">
-                    <SmallLogo />
+                    <Logo width={60} height={60} />
                     <span className="font-extrabold text-white">
                       {t("name")}
                     </span>
@@ -98,7 +98,7 @@ const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
           <div className="-mr-2 flex w-full flex-row items-center justify-between md:hidden">
             {isVisible && (
               <div className="flex flex-row items-center justify-center">
-                <SmallLogo />
+                <Logo width={60} height={60} />
                 <span className="font-extrabold text-white">{t("name")}</span>
               </div>
             )}

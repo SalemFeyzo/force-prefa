@@ -36,7 +36,7 @@ export default function ContactForm() {
     },
   });
   // 2. Define a submit handler.
-  const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (data) => {
+  const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async () => {
     try {
       const { text, status } = await emailjs.sendForm(
         "service_c7v5xpo",
