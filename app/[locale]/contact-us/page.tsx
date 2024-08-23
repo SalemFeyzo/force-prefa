@@ -16,8 +16,8 @@ export default function ContactUs({
 }) {
   unstable_setRequestLocale(locale);
   return (
-    <div className="flex flex-col gap-3 bg-gray-800 text-gray-50">
-      <div className="flex h-full w-full flex-col gap-3 bg-gray-800 text-gray-50 md:flex-row">
+    <div className="flex flex-col gap-3">
+      <div className="flex h-full w-full flex-col gap-3 md:flex-row">
         <div className="w-full p-5">
           <h1 className="border-b-2 pb-2 text-xl font-bold">
             Contact Information
