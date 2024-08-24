@@ -1,10 +1,21 @@
 {
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
   "cSpell.words": [
     "dotlottie",
     "headlessui",
     "hookform",
     "lottiefiles",
+    "nextjs",
+    "prefa",
     "PREFABRIK",
+    "supabase",
+    "tailwindcss",
+    "Tiktok",
     "toploader"
-  ]
+  ],
+  "deno.enablePaths": ["supabase/functions"],
+  "deno.lint": true,
+  "deno.unstable": true
 }
