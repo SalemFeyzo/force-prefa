@@ -13,6 +13,8 @@ export const localePrefix =
 export const pathnames = {
   "/": "/",
   "/about": "/about",
+  "/admin": "/admin",
+  "/login": "/login",
   "/contact-us": "/contact-us",
   "/products": "/products",
   "/products/[id]": "/products/[id]",
