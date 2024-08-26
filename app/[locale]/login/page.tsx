@@ -8,8 +8,10 @@ export default function Login({
 }) {
   unstable_setRequestLocale(locale);
   return (
-    <div className="max-w-4/5">
-      <LoginForm />
+    <div className="h-screen w-screen bg-gray-800 text-gray-100">
+      <div className="mx-auto my-auto md:w-[50%]">
+        <LoginForm />
+      </div>
     </div>
   );
 }
