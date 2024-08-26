@@ -1,8 +1,11 @@
-import React from "react";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-type Props = {};
-
-export default function Admin({}: Props) {
+export default function Admin({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   return (
     <div>
       <h1>Admin</h1>

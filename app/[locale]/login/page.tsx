@@ -1,11 +1,14 @@
 import LoginForm from "@/components/login-form";
-import React from "react";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-type Props = {};
-
-export default function Login({}: Props) {
+export default function Login({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   return (
-    <div>
+    <div className="max-w-4/5">
       <LoginForm />
     </div>
   );
