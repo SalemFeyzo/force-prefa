@@ -1,3 +1,4 @@
+import PublicLayout from "@/components/public-layout";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 export default function Project({
@@ -7,8 +8,10 @@ export default function Project({
 }) {
   unstable_setRequestLocale(locale);
   return (
-    <div>
-      <h1>Project</h1>
-    </div>
+    <PublicLayout>
+      <div>
+        <h1>Project</h1>
+      </div>
+    </PublicLayout>
   );
 }

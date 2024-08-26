@@ -1,5 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 import { createClient } from "@/supabase/client";
+import PublicLayout from "@/components/public-layout";
 
 export const revalidate = 60;
 
@@ -18,9 +19,11 @@ export default async function Product({
   const supabase = createClient();
   const { data: note } = await supabase.from("notes").select().eq("id", id);
   return (
-    <div>
-      <h1>Product</h1>
-      <pre dir="ltr">{JSON.stringify(note, null, 2)}</pre>
-    </div>
+    <PublicLayout>
+      <div>
+        <h1>Product</h1>
+        <pre dir="ltr">{JSON.stringify(note, null, 2)}</pre>
+      </div>
+    </PublicLayout>
   );
 }

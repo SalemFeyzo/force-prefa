@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
 import { Transition } from "@headlessui/react";
 import { useLocale } from "next-intl";
-import { Link } from "@/lib/navigation";
+import { Link, usePathname } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
 import Logo from "./logo";
 
@@ -12,9 +11,7 @@ const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("default.navbar");
   const locale = useLocale();
-  const selectedLayoutSegment = useSelectedLayoutSegment();
-  const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : "/";
-
+  const pathname = usePathname();
   return (
     <nav
       className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900"
@@ -48,7 +45,10 @@ const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
                   <Link href="/products">
                     <div
                       className={`${
-                        pathname === "/products" ? "bg-gray-700 text-white" : ""
+                        pathname === "/products" ||
+                        pathname === "/products/[id]"
+                          ? "bg-gray-700 text-white"
+                          : ""
                       } ${
                         locale === "ar" && "ml-4"
                       } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
@@ -59,7 +59,10 @@ const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
                   <Link href="/projects">
                     <div
                       className={`${
-                        pathname === "/projects" ? "bg-gray-700 text-white" : ""
+                        pathname === "/projects" ||
+                        pathname === "/projects/[id]"
+                          ? "bg-gray-700 text-white"
+                          : ""
                       } ${
                         locale === "ar" && "ml-4"
                       } rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
@@ -171,7 +174,9 @@ const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
             <Link href="/products">
               <div
                 className={`${
-                  pathname === "/products" ? "bg-gray-700 text-white" : ""
+                  pathname === "/products" || pathname === "/products/[id]"
+                    ? "bg-gray-700 text-white"
+                    : ""
                 } block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
               >
                 {t("products")}
@@ -180,7 +185,9 @@ const NavbarMenu = ({ isVisible }: { isVisible: boolean }) => {
             <Link href="/projects">
               <div
                 className={`${
-                  pathname === "/projects" ? "bg-gray-700 text-white" : ""
+                  pathname === "/projects" || pathname === "/projects/[id]"
+                    ? "bg-gray-700 text-white"
+                    : ""
                 } block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
               >
                 {t("projects")}
