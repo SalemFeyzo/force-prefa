@@ -8,9 +8,11 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import { ToastContainer } from "react-toastify";
 
 import { locales } from "@/lib/navigation";
 
+import "react-toastify/dist/ReactToastify.css";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -82,6 +84,7 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
       <NextIntlClientProvider locale={locale} messages={messages}>
         <body className={locale === "ar" ? cairo.className : inter.className}>
           {children}
+          <ToastContainer />
         </body>
       </NextIntlClientProvider>
     </html>

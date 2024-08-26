@@ -13,6 +13,7 @@
     "supabase",
     "tailwindcss",
     "Tiktok",
+    "toastify",
     "toploader"
   ],
   "deno.enablePaths": ["supabase/functions"],
