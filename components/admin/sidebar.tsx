@@ -13,13 +13,12 @@ import {
   LuImageMinus,
 } from "react-icons/lu";
 import { IconType } from "react-icons";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/lib/navigation";
 import React from "react";
 import Logo from "../logo";
 
 interface SidebarLinkProps {
-  href: string;
+  href: any;
   icon: IconType;
   label: string;
   isCollapsed: boolean;
@@ -32,8 +31,7 @@ const SidebarLink = ({
   isCollapsed,
 }: SidebarLinkProps) => {
   const pathname = usePathname();
-  const isActive =
-    pathname === href || (pathname === "/" && href === "/dashboard");
+  const isActive = pathname === href;
 
   return (
     <Link href={href}>
@@ -86,13 +84,16 @@ const Sidebar = () => {
         >
           FORCE PREFABRIK
         </h1>
-
-        <button
-          className="rounded-full bg-gray-900 px-3 py-3 hover:bg-gray-800 md:hidden"
-          onClick={toggleSidebar}
-        >
-          <LuX className="h-4 w-4" />
-        </button>
+        {isSidebarCollapsed ? (
+          ""
+        ) : (
+          <button
+            className="rounded-full bg-gray-900 px-3 py-3 hover:bg-gray-800 md:hidden"
+            onClick={toggleSidebar}
+          >
+            <LuX className="h-4 w-4" />
+          </button>
+        )}
       </div>
 
       {/* LINKS */}
