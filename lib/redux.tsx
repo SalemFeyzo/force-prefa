@@ -21,16 +21,19 @@ import {
 } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+import Logo from "@/components/logo";
 
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
   return {
+    // eslint-disable-next-line no-unused-vars
     getItem(_key: any) {
       return Promise.resolve(null);
     },
     setItem(_key: any, value: any) {
       return Promise.resolve(value);
     },
+    // eslint-disable-next-line no-unused-vars
     removeItem(_key: any) {
       return Promise.resolve();
     },
@@ -84,10 +87,14 @@ export default function StoreProvider({
     setupListeners(storeRef.current.dispatch);
   }
   const persistor = persistStore(storeRef.current);
-
+  const Loader = (
+    <div className="flex h-screen w-screen items-center justify-center bg-gray-800">
+      <Logo width={300} height={300} />
+    </div>
+  );
   return (
     <Provider store={storeRef.current}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={Loader} persistor={persistor}>
         {children}
       </PersistGate>
     </Provider>

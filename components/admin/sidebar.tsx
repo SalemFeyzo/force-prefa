@@ -4,12 +4,12 @@ import { useAppDispatch, useAppSelector } from "@/lib/redux";
 import { setIsSidebarCollapsed } from "@/state";
 import {
   LuCircleDollarSign,
-  LuLayoutTemplate,
   LuSlidersHorizontal,
   LuUser,
   LuClipboard,
   LuArchive,
-  LuMenu,
+  LuHome,
+  LuX,
 } from "react-icons/lu";
 import { IconType } from "react-icons";
 import Link from "next/link";
@@ -39,16 +39,16 @@ const SidebarLink = ({
       <div
         className={`flex cursor-pointer items-center ${
           isCollapsed ? "justify-center py-4" : "justify-start px-8 py-4"
-        } gap-3 transition-colors hover:bg-blue-100 hover:text-blue-500 ${
-          isActive ? "bg-blue-200 text-white" : ""
+        } gap-3 transition-colors hover:bg-gray-900 hover:text-gray-300 ${
+          isActive ? "bg-gray-950 text-white" : ""
         } }`}
       >
-        <Icon className="h-6 w-6 !text-gray-700" />
+        <Icon className="h-6 w-6 !text-gray-50" />
 
         <span
           className={`${
             isCollapsed ? "hidden" : "block"
-          } font-medium text-gray-700`}
+          } font-medium text-gray-50`}
         >
           {label}
         </span>
@@ -67,17 +67,15 @@ const Sidebar = () => {
     dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
   };
 
-  const sidebarClassNames = `fixed flex flex-col ${
-    isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64"
-  } bg-white transition-all duration-300 overflow-hidden h-full shadow-md z-40`;
-
   return (
-    <div className={sidebarClassNames}>
+    <div
+      className={`bg fixed flex flex-col ${
+        isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64"
+      } z-40 h-full overflow-hidden bg-gray-700 shadow-md transition-all duration-300`}
+    >
       {/* TOP LOGO */}
       <div
-        className={`flex items-center justify-between gap-3 pt-8 md:justify-normal ${
-          isSidebarCollapsed ? "px-5" : "px-8"
-        }`}
+        className={`mx-2 flex items-center justify-between gap-2 pt-8 md:justify-normal`}
       >
         <Logo width={50} height={50} />
         <h1
@@ -89,29 +87,29 @@ const Sidebar = () => {
         </h1>
 
         <button
-          className="rounded-full bg-gray-100 px-3 py-3 hover:bg-blue-100 md:hidden"
+          className="rounded-full bg-gray-900 px-3 py-3 hover:bg-gray-800 md:hidden"
           onClick={toggleSidebar}
         >
-          <LuMenu className="h-4 w-4" />
+          <LuX className="h-4 w-4" />
         </button>
       </div>
 
       {/* LINKS */}
       <div className="mt-8 flex-grow">
         <SidebarLink
-          href="/dashboard"
-          icon={LuLayoutTemplate}
-          label="Dashboard"
+          href="/admin"
+          icon={LuHome}
+          label="Home"
           isCollapsed={isSidebarCollapsed}
         />
         <SidebarLink
-          href="/inventory"
+          href="/admin/projects"
           icon={LuArchive}
-          label="Inventory"
+          label="Projects"
           isCollapsed={isSidebarCollapsed}
         />
         <SidebarLink
-          href="/products"
+          href="/admin/products"
           icon={LuClipboard}
           label="Products"
           isCollapsed={isSidebarCollapsed}
@@ -138,7 +136,9 @@ const Sidebar = () => {
 
       {/* FOOTER */}
       <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
-        <p className="text-center text-xs text-gray-500">&copy; 2024 Edstock</p>
+        <p className="text-center text-xs text-gray-500">
+          &copy; 2024 FORCE PREFABRIK
+        </p>
       </div>
     </div>
   );
