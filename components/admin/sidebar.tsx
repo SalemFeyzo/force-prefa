@@ -3,13 +3,14 @@
 import { useAppDispatch, useAppSelector } from "@/lib/redux";
 import { setIsSidebarCollapsed } from "@/state";
 import {
-  LuCircleDollarSign,
   LuSlidersHorizontal,
-  LuUser,
   LuClipboard,
   LuArchive,
   LuHome,
   LuX,
+  LuListTree,
+  LuLanguages,
+  LuImageMinus,
 } from "react-icons/lu";
 import { IconType } from "react-icons";
 import Link from "next/link";
@@ -40,7 +41,7 @@ const SidebarLink = ({
         className={`flex cursor-pointer items-center ${
           isCollapsed ? "justify-center py-4" : "justify-start px-8 py-4"
         } gap-3 transition-colors hover:bg-gray-900 hover:text-gray-300 ${
-          isActive ? "bg-gray-950 text-white" : ""
+          isActive ? "bg-gray-800 text-white" : ""
         } }`}
       >
         <Icon className="h-6 w-6 !text-gray-50" />
@@ -71,7 +72,7 @@ const Sidebar = () => {
     <div
       className={`bg fixed flex flex-col ${
         isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64"
-      } z-40 h-full overflow-hidden bg-gray-700 shadow-md transition-all duration-300`}
+      } z-40 h-full bg-gray-700 shadow-md transition-all duration-300`}
     >
       {/* TOP LOGO */}
       <div
@@ -115,21 +116,27 @@ const Sidebar = () => {
           isCollapsed={isSidebarCollapsed}
         />
         <SidebarLink
-          href="/users"
-          icon={LuUser}
-          label="Users"
+          href="/admin/categories"
+          icon={LuListTree}
+          label="Categories"
           isCollapsed={isSidebarCollapsed}
         />
         <SidebarLink
-          href="/settings"
+          href="/admin/languages"
+          icon={LuLanguages}
+          label="Languages"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/admin/images"
+          icon={LuImageMinus}
+          label="Images"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/admin/settings"
           icon={LuSlidersHorizontal}
           label="Settings"
-          isCollapsed={isSidebarCollapsed}
-        />
-        <SidebarLink
-          href="/expenses"
-          icon={LuCircleDollarSign}
-          label="Expenses"
           isCollapsed={isSidebarCollapsed}
         />
       </div>

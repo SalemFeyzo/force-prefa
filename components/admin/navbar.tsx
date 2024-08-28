@@ -31,12 +31,9 @@ const Navbar = () => {
       {/* RIGHT SIDE */}
       <div className="flex items-center justify-between gap-5">
         <div className="hidden items-center justify-between gap-5 md:flex">
-          <div className="flex cursor-pointer items-center gap-3">
-            <LuUser width={50} height={50} />
-            <span className="font-semibold">Ed Roh</span>
-          </div>
+          <LuUser />
         </div>
-        <Link href="/settings">
+        <Link href="/admin/settings">
           <LuSettings className="cursor-pointer text-gray-50" size={24} />
         </Link>
       </div>

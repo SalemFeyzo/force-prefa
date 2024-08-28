@@ -4,8 +4,10 @@ import React, { useEffect } from "react";
 import Navbar from "./navbar";
 import Sidebar from "./sidebar";
 import StoreProvider, { useAppSelector } from "@/lib/redux";
+import { useLocale } from "next-intl";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const locale = useLocale();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
@@ -24,7 +26,9 @@ function Layout({ children }: { children: React.ReactNode }) {
       <Sidebar />
       <main
         className={`flex h-full w-full flex-col px-9 py-7 ${
-          isSidebarCollapsed ? "md:pl-24" : "md:pl-72"
+          isSidebarCollapsed
+            ? `${locale === "ar" ? "md:pr-24" : "md:pl-24"}`
+            : `${locale === "ar" ? "md:pr-72" : "md:pl-72"}`
         }`}
       >
         <Navbar />
