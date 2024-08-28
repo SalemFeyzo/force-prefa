@@ -16,7 +16,9 @@
     "tailwindcss",
     "Tiktok",
     "toastify",
-    "toploader"
+    "toploader",
+    "Türkçe",
+    "العربية"
   ],
   "deno.enablePaths": ["supabase/functions"],
   "deno.lint": true,
