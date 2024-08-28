@@ -1,40 +1,44 @@
-// import { Product } from "@/types/product";
+import type { Product } from "@/types/product";
 
-// export const productsEN: Product[] = [
-//   {
-//     id: "1",
-//     title: "First Product",
-//     description: "First product description",
-//     mainImage: "/image.png",
-//     images: ["/image.png", "/image.png", "/image.png"],
-//     categoryId: "1",
-//     featured: true,
-//     locale: "en",
-//   },
-// ];
-
-// export const productsTR: Product[] = [
-//   {
-//     id: "1",
-//     title: "First Product",
-//     description: "First product description",
-//     mainImage: "/image.png",
-//     images: ["/image.png", "/image.png", "/image.png"],
-//     categoryId: "1",
-//     featured: true,
-//     locale: "tr",
-//   },
-// ];
-
-// export const productsAR: Product[] = [
-//   {
-//     id: "1",
-//     title: "First Product",
-//     description: "First product description",
-//     mainImage: "/image.png",
-//     images: ["/image.png", "/image.png", "/image.png"],
-//     categoryId: "1",
-//     featured: true,
-//     locale: "ar",
-//   },
-// ];
+export const products: Product[] = [
+    {
+        id: 1,
+        title: "Product sample 1",
+    },
+    {
+        id: 2,
+        title: "Product sample 2",
+    },
+    {
+        id: 3,
+        title: "Product sample 3",
+    },
+    {
+        id: 4,
+        title: "Product sample 4",
+    },
+    {
+        id: 5,
+        title: "Product sample 5",
+    },
+    {
+        id: 6,
+        title: "Product sample 6",
+    },
+    {
+        id: 7,
+        title: "Product sample 7",
+    },
+    {
+        id: 8,
+        title: "Product sample 8",
+    },
+    {
+        id: 9,
+        title: "Product sample 9",
+    },
+    {
+        id: 10,
+        title: "Product sample 10",
+    },
+];
