@@ -1,25 +1,36 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import Navbar from "./navbar";
 import Sidebar from "./sidebar";
-import StoreProvider, { useAppSelector } from "@/lib/redux";
+import { useAppDispatch, useAppSelector } from "@/lib/redux";
 import { useLocale } from "next-intl";
+import { useEffect } from "react";
+import { setIsSidebarCollapsed } from "@/state";
 
 function Layout({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
-  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
+  const dispatch = useAppDispatch();
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)",
+  );
+  const isLargeDevice = useMediaQuery(
+    "only screen and (min-width : 993px) and (max-width : 1200px)",
+  );
+  const isExtraLargeDevice = useMediaQuery(
+    "only screen and (min-width : 1201px)",
+  );
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
+    if (isMediumDevice || isLargeDevice || isExtraLargeDevice) {
+      dispatch(setIsSidebarCollapsed(false));
     } else {
-      document.documentElement.classList.add("light");
+      dispatch(setIsSidebarCollapsed(true));
     }
-  });
+  }, [isMediumDevice, isLargeDevice, isExtraLargeDevice, dispatch]);
 
   return (
     <div className="flex min-h-screen w-full bg-gray-800 text-gray-50">
@@ -43,9 +54,5 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <StoreProvider>
-      <Layout>{children}</Layout>
-    </StoreProvider>
-  );
+  return <Layout>{children}</Layout>;
 }

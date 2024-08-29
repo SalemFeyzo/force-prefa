@@ -10,6 +10,7 @@ import {
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
 import { locales } from "@/lib/navigation";
+import ReduxStoreProvider from "@/providers/store-provider";
 
 import "../globals.css";
 import NextTopLoader from "nextjs-toploader";
@@ -92,7 +93,7 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
             easing="ease"
             speed={200}
           />
-          {children}
+          <ReduxStoreProvider>{children}</ReduxStoreProvider>
         </body>
       </NextIntlClientProvider>
     </html>
