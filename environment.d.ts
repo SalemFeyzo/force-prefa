@@ -8,5 +8,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: string;
     DATABASE_URL: string;
     DIRECT_URL: string;
+    NEXT_PUBLIC_INSTANTDB_APP_ID: string;
   }
 }

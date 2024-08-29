@@ -1,104 +1,102 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { Button, Field, Label, Input } from "@headlessui/react";
-import { useState } from "react";
-import { createClient } from "@/supabase/client";
-
-const formSchema = z.object({
-  email: z.string().email().min(1),
-  password: z.string().min(8),
-});
+import React, { useState } from "react";
+import { db } from "@/lib/instantdb";
 
 export default function LoginForm() {
-  const [success, setSuccess] = useState<boolean>(false);
-  const supabase = createClient();
-  // 1. Define your form.
-  const {
-    register,
-    handleSubmit,
-    setError,
-    reset,
-    formState: { isSubmitting, errors },
-  } = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-  // 2. Define a submit handler.
-  const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async ({
-    email,
-    password,
-  }) => {
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error !== null && data.user === null) setSuccess(false);
-      else setSuccess(true);
-      reset();
-    } catch (error) {
-      setError("root", {
-        message: String(error),
-      });
-    }
-  };
-  return (
-    <div className="w-full p-5">
-      <h1 className="border-b-2 pb-2 text-xl font-bold">Login Form</h1>
-      <br />
-      <form
-        id="contact-form"
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex w-full flex-col items-start justify-center gap-4 text-white"
-      >
-        <Field className="w-full">
-          <Label className="text-lg">Your Email:</Label>
-          <Input
-            className="w-full rounded-md border p-3 data-[focus]:bg-gray-700 data-[hover]:shadow"
-            placeholder="example@gmail.com"
-            {...register("email")}
-            data-focus
-            data-hover
-          />
-        </Field>
-        <span className="text-red-500">
-          {errors.email && errors.email.message}
-        </span>
+  const { isLoading, user, error } = db.useAuth();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Uh oh! {error.message}</div>;
+  }
+  if (user) {
+    return (
+      <>
+        <h1>Hello {user.email}!</h1>
+        <button onClick={() => db.auth.signOut()}>Logout</button>
+      </>
+    );
+  }
+  return <Login />;
+}
 
-        <Field className="w-full">
-          <Label className="text-lg">Your password:</Label>
-          <Input
-            type="password"
-            className="w-full rounded-md border p-3 data-[focus]:bg-gray-700 data-[hover]:shadow"
-            placeholder="********"
-            {...register("password")}
-            data-focus
-            data-hover
-          />
-        </Field>
-        <span className="text-red-500">
-          {errors.password && errors.password.message}
-        </span>
-        <Button
-          disabled={isSubmitting}
-          type="submit"
-          className="w-full rounded bg-sky-600 px-4 py-2 text-sm text-white data-[active]:bg-sky-700 data-[hover]:bg-sky-500"
-        >
-          {isSubmitting ? "Loading..." : "Submit"}
-        </Button>
-        <span className="text-red-500">
-          {errors.root && errors.root.message}
-        </span>
-        <span className="text-green-700">
-          {success && "Logged in successfully"}
-        </span>
-      </form>
+function Login() {
+  const [sentEmail, setSentEmail] = useState("");
+  return (
+    <div>
+      {!sentEmail ? (
+        <Email setSentEmail={setSentEmail} />
+      ) : (
+        <MagicCode sentEmail={sentEmail} />
+      )}
     </div>
+  );
+}
+
+function Email({
+  setSentEmail,
+}: {
+  setSentEmail: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!email) return;
+    setSentEmail(email);
+    db.auth.sendMagicCode({ email }).catch((err) => {
+      alert("Uh oh :" + err.body?.message);
+      setSentEmail("");
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Let&#39;s log you in!</h2>
+      <div>
+        <input
+          className="bg-gray-800"
+          placeholder="Enter your email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          dir="ltr"
+        />
+      </div>
+      <div>
+        <button type="submit">Send Code</button>
+      </div>
+    </form>
+  );
+}
+
+function MagicCode({ sentEmail }: { sentEmail: string }) {
+  const [code, setCode] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    db.auth.signInWithMagicCode({ email: sentEmail, code }).catch((err) => {
+      alert("Uh oh :" + err.body?.message);
+      setCode("");
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Okay, we sent you an email! What was the code?</h2>
+      <div>
+        <input
+          className="bg-gray-800"
+          type="text"
+          placeholder="123456..."
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          dir="ltr"
+        />
+      </div>
+      <button type="submit">Verify</button>
+    </form>
   );
 }
