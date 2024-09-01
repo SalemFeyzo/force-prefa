@@ -1,6 +1,6 @@
 "use client";
 
-import { init, tx, id } from "@instantdb/react";
+import { init, tx, id, User } from "@instantdb/react";
 import { LuTrash } from "react-icons/lu";
 import { Checkbox, Input } from "@headlessui/react";
 
@@ -29,6 +29,7 @@ const db = init<Schema>({
 });
 
 export default function TodoApp() {
+  const { user } = db.useAuth();
   // Read Data
   const { isLoading, error, data } = db.useQuery({ todos: {} });
   if (isLoading) {
@@ -38,11 +39,12 @@ export default function TodoApp() {
     return <div>Error fetching data: {error.message}</div>;
   }
   const { todos } = data;
+
   return (
     <div className="flex flex-col gap-2">
       <Header name="Todos" />
       <div className="flex flex-col gap-2">
-        <TodoForm todos={todos} />
+        <TodoForm todos={todos} user={user} />
         <TodoList todos={todos} />
         <ActionBar todos={todos} />
       </div>
@@ -52,14 +54,20 @@ export default function TodoApp() {
 
 // Write Data
 // ---------
-function addTodo(text: string) {
-  db.transact(
-    tx.todos[id()].update({
-      text,
-      done: false,
-      createdAt: Date.now(),
+function addTodo(text: string, authorId: string) {
+  const todoId = id();
+  db.transact([
+    tx.todos[todoId]
+      .update({
+        text,
+        done: false,
+        createdAt: Date.now(),
+      })
+      .link({ author: authorId }),
+    tx.authors[authorId].link({
+      todos: todoId,
     }),
-  );
+  ]);
 }
 
 function deleteTodo(todo: Todo) {
@@ -83,7 +91,23 @@ function toggleAll(todos: Todo[]) {
 
 // Components
 // ----------
-function TodoForm({ todos }: { todos: Todo[] }) {
+function TodoForm({ todos, user }: { todos: Todo[]; user: User | undefined }) {
+  const { isLoading, error, data } = db.useQuery({
+    authors: {
+      $: {
+        where: {
+          userId: user?.id!,
+        },
+      },
+    },
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Uh oh! {error.message}</div>;
+  }
   return (
     <div className="relative flex flex-row gap-3">
       <button
@@ -95,7 +119,7 @@ function TodoForm({ todos }: { todos: Todo[] }) {
       <form
         onSubmit={(e: any) => {
           e.preventDefault();
-          addTodo(e.target[0].value);
+          addTodo(e.target[0].value, data.authors[0].id);
           e.target[0].value = "";
         }}
       >

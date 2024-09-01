@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/admin-layout";
+import TodoApp from "@/components/admin/todo-app";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 export default function Admin({
@@ -12,6 +13,7 @@ export default function Admin({
     <AdminLayout>
       <div>
         <h1>Admin</h1>
+        <TodoApp />
       </div>
     </AdminLayout>
   );

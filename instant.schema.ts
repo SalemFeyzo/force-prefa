@@ -9,19 +9,36 @@ const INSTANT_APP_ID = "5262239d-8113-4701-9320-3b7fb5e40042";
 const graph = i.graph(
   INSTANT_APP_ID,
   {
+    todos: i.entity({
+      text: i.string(),
+      done: i.boolean(),
+      createdAt: i.number(),
+    }),
     posts: i.entity({
       name: i.string(),
       content: i.string(),
     }),
     authors: i.entity({
       userId: i.string(),
-      name: i.string(),
+      username: i.string().unique(),
     }),
     tags: i.entity({
       label: i.string(),
     }),
   },
   {
+    authorTodos: {
+      forward: {
+        on: "authors",
+        has: "many",
+        label: "todos",
+      },
+      reverse: {
+        on: "todos",
+        has: "one",
+        label: "author",
+      },
+    },
     authorPosts: {
       forward: {
         on: "authors",
@@ -48,6 +65,5 @@ const graph = i.graph(
     },
   },
 );
-
 
 export default graph;

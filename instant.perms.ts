@@ -9,8 +9,17 @@ export default {
       delete: "isAuthor",
     },
   },
+  todos: {
+    bind: ["isAuthor", "auth.id in data.ref('author.userId')"],
+    allow: {
+      view: "true",
+      create: "isAuthor",
+      update: "isAuthor",
+      delete: "isAuthor",
+    },
+  },
   posts: {
-    bind: ["isAuthor", "auth.id in data.ref('authors.userId')"],
+    bind: ["isAuthor", "auth.id in data.ref('author.userId')"],
     allow: {
       view: "true",
       create: "isAuthor",
@@ -19,7 +28,7 @@ export default {
     },
   },
   tags: {
-    bind: ["isOwner", "auth.id in data.ref('posts.authors.userId')"],
+    bind: ["isOwner", "auth.id in data.ref('posts.author.userId')"],
     allow: {
       view: "true",
       create: "isOwner",
