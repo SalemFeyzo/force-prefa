@@ -12,7 +12,7 @@ export default {
   todos: {
     bind: ["isAuthor", "auth.id in data.ref('author.userId')"],
     allow: {
-      view: "true",
+      view: "isAuthor",
       create: "isAuthor",
       update: "isAuthor",
       delete: "isAuthor",

@@ -4,10 +4,6 @@ declare namespace NodeJS {
     NODE_ENV: "development" | "production" | "test";
     SITE_URL: string;
     NEXT_PUBLIC_LOCALE_PREFIX: "always" | "as-needed" | "never";
-    NEXT_PUBLIC_SUPABASE_URL: string;
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: string;
-    DATABASE_URL: string;
-    DIRECT_URL: string;
     NEXT_PUBLIC_INSTANTDB_APP_ID: string;
   }
 }
