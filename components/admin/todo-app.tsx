@@ -1,37 +1,17 @@
 "use client";
 
-import { init, tx, id, User } from "@instantdb/react";
+import { tx, id, type User, type InstantObject } from "@instantdb/react";
 import { LuTrash } from "react-icons/lu";
 import { Checkbox, Input } from "@headlessui/react";
-
+import { db } from "@/lib/instantdb";
 import Header from "./header";
-
-// ID for app: Force Prefabrik
-const APP_ID = process.env.NEXT_PUBLIC_INSTANTDB_APP_ID;
-
-// Types
-// ----------
-type Todo = {
-  id: string;
-  text: string;
-  done: boolean;
-  createdAt: number;
-};
-
-// Optional: Declare your schema for intellisense!
-type Schema = {
-  todos: Todo;
-};
-
-const db = init<Schema>({
-  appId: APP_ID,
-  devtool: process.env.NODE_ENV === "development",
-});
 
 export default function TodoApp() {
   const { user } = db.useAuth();
   // Read Data
-  const { isLoading, error, data } = db.useQuery({ todos: {} });
+  const { isLoading, error, data } = db.useQuery({
+    todos: {},
+  });
   if (isLoading) {
     return <div>Fetching data...</div>;
   }
@@ -70,28 +50,34 @@ function addTodo(text: string, authorId: string) {
   ]);
 }
 
-function deleteTodo(todo: Todo) {
+function deleteTodo(todo: InstantObject) {
   db.transact(tx.todos[todo.id].delete());
 }
 
-function toggleDone(todo: Todo) {
+function toggleDone(todo: InstantObject) {
   db.transact(tx.todos[todo.id].update({ done: !todo.done }));
 }
 
-function deleteCompleted(todos: Todo[]) {
+function deleteCompleted(todos: InstantObject[]) {
   const completed = todos.filter((todo) => todo.done);
   const txs = completed.map((todo) => tx.todos[todo.id].delete());
   db.transact(txs);
 }
 
-function toggleAll(todos: Todo[]) {
+function toggleAll(todos: InstantObject[]) {
   const newVal = !todos.every((todo) => todo.done);
   db.transact(todos.map((todo) => tx.todos[todo.id].update({ done: newVal })));
 }
 
 // Components
 // ----------
-function TodoForm({ todos, user }: { todos: Todo[]; user: User | undefined }) {
+function TodoForm({
+  todos,
+  user,
+}: {
+  todos: InstantObject[];
+  user: User | undefined;
+}) {
   const { isLoading, error, data } = db.useQuery({
     authors: {
       $: {
@@ -134,7 +120,7 @@ function TodoForm({ todos, user }: { todos: Todo[]; user: User | undefined }) {
   );
 }
 
-function TodoList({ todos }: { todos: Todo[] }) {
+function TodoList({ todos }: { todos: InstantObject[] }) {
   return (
     <div className="flex flex-col gap-3">
       {todos.map((todo) => (
@@ -182,7 +168,7 @@ function TodoList({ todos }: { todos: Todo[] }) {
   );
 }
 
-function ActionBar({ todos }: { todos: Todo[] }) {
+function ActionBar({ todos }: { todos: InstantObject[] }) {
   return (
     <div>
       <div>Remaining todos: {todos.filter((todo) => !todo.done).length}</div>
