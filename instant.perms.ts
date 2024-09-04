@@ -18,7 +18,7 @@ export default {
       delete: "isAuthor",
     },
   },
-  posts: {
+  products: {
     bind: ["isAuthor", "auth.id in data.ref('author.userId')"],
     allow: {
       view: "true",
@@ -28,12 +28,30 @@ export default {
     },
   },
   tags: {
-    bind: ["isOwner", "auth.id in data.ref('posts.author.userId')"],
+    bind: ["isOwner", "auth.id in data.ref('products.author.userId')"],
     allow: {
       view: "true",
       create: "isOwner",
       update: "isOwner",
       delete: "isOwner",
+    },
+  },
+  images: {
+    bind: ["isOwner", "auth.id in data.ref('products.author.userId')"],
+    allow: {
+      view: "true",
+      create: "isOwner",
+      update: "isOwner",
+      delete: "isOwner",
+    },
+  },
+  $files: {
+    bind: ["isAuthor", "auth.id in data.ref('author.userId')"],
+    allow: {
+      view: "isAuthor",
+      create: "isAuthor",
+      update: "isAuthor",
+      delete: "isAuthor",
     },
   },
 };

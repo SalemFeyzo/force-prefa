@@ -12,6 +12,7 @@
     "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^2.1.4",
     "@hookform/resolvers": "^3.9.0",
+    "@instantdb/admin": "^0.12.19",
     "@instantdb/core": "^0.12.19",
     "@instantdb/react": "^0.12.19",
     "@lottiefiles/dotlottie-react": "^0.8.11",

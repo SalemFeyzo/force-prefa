@@ -8,7 +8,6 @@ export default function Admin({
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-
   return (
     <AdminLayout>
       <div>

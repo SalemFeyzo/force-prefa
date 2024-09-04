@@ -14,9 +14,12 @@ const graph = i.graph(
       done: i.boolean(),
       createdAt: i.number(),
     }),
-    posts: i.entity({
+    products: i.entity({
       name: i.string(),
       content: i.string(),
+    }),
+    images: i.entity({
+      url: i.string(),
     }),
     authors: i.entity({
       userId: i.string(),
@@ -39,28 +42,40 @@ const graph = i.graph(
         label: "author",
       },
     },
-    authorPosts: {
+    authorProducts: {
       forward: {
         on: "authors",
         has: "many",
-        label: "posts",
+        label: "products",
       },
       reverse: {
-        on: "posts",
+        on: "products",
         has: "one",
         label: "author",
       },
     },
-    postsTags: {
+    productsTags: {
       forward: {
-        on: "posts",
+        on: "products",
         has: "many",
         label: "tags",
       },
       reverse: {
         on: "tags",
         has: "many",
-        label: "posts",
+        label: "products",
+      },
+    },
+    productsImages: {
+      forward: {
+        on: "products",
+        has: "many",
+        label: "images",
+      },
+      reverse: {
+        on: "images",
+        has: "one",
+        label: "product",
       },
     },
   },

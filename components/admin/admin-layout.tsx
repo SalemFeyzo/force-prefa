@@ -7,8 +7,11 @@ import { useAppDispatch, useAppSelector } from "@/lib/redux";
 import { useLocale } from "next-intl";
 import { useEffect } from "react";
 import { setIsSidebarCollapsed } from "@/state";
+import { db } from "@/lib/instantdb";
+import { redirect } from "@/lib/navigation";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const { user, error, isLoading } = db.useAuth();
   const locale = useLocale();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
@@ -31,6 +34,10 @@ function Layout({ children }: { children: React.ReactNode }) {
       dispatch(setIsSidebarCollapsed(true));
     }
   }, [isMediumDevice, isLargeDevice, isExtraLargeDevice, dispatch]);
+
+  if (!isLoading && !error && !user) {
+    redirect("/login");
+  }
 
   return (
     <div className="flex min-h-screen w-full bg-gray-800 text-gray-50">
