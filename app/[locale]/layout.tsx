@@ -14,6 +14,7 @@ import ReduxStoreProvider from "@/providers/store-provider";
 
 import "../globals.css";
 import NextTopLoader from "nextjs-toploader";
+import ClerkAuthProvider from "@/providers/clerk-auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"] });
@@ -82,19 +83,21 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <body className={locale === "ar" ? cairo.className : inter.className}>
-          <NextTopLoader
-            color="#facc15"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={3}
-            crawl={true}
-            showSpinner={false}
-            easing="ease"
-            speed={200}
-          />
-          <ReduxStoreProvider>{children}</ReduxStoreProvider>
-        </body>
+        <ClerkAuthProvider>
+          <body className={locale === "ar" ? cairo.className : inter.className}>
+            <NextTopLoader
+              color="#facc15"
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={3}
+              crawl={true}
+              showSpinner={false}
+              easing="ease"
+              speed={200}
+            />
+            <ReduxStoreProvider>{children}</ReduxStoreProvider>
+          </body>
+        </ClerkAuthProvider>
       </NextIntlClientProvider>
     </html>
   );

@@ -6,5 +6,7 @@ declare namespace NodeJS {
     NEXT_PUBLIC_LOCALE_PREFIX: "always" | "as-needed" | "never";
     NEXT_PUBLIC_INSTANTDB_APP_ID: string;
     INSTANT_ADMIN_TOKEN: string;
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: string;
+    CLERK_SECRET_KEY: string;
   }
 }

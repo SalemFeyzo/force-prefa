@@ -5,13 +5,13 @@ import Navbar from "./navbar";
 import Sidebar from "./sidebar";
 import { useAppDispatch, useAppSelector } from "@/lib/redux";
 import { useLocale } from "next-intl";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { setIsSidebarCollapsed } from "@/state";
+import { useAuth } from "@clerk/nextjs";
 import { db } from "@/lib/instantdb";
-import { redirect } from "@/lib/navigation";
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const { user, error, isLoading } = db.useAuth();
+  const { getToken } = useAuth();
   const locale = useLocale();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
@@ -27,6 +27,28 @@ function Layout({ children }: { children: React.ReactNode }) {
     "only screen and (min-width : 1201px)",
   );
 
+  const signInToInstantWithClerkToken = useCallback(async () => {
+    // getToken gets the jwt from Clerk for your signed in user.
+    const idToken = await getToken();
+
+    if (!idToken) {
+      // No jwt, can't sign in to instant
+      return;
+    }
+
+    // Create a long-lived session with Instant for your clerk user
+    // It will look up the user by email or create a new user with
+    // the email address in the session token.
+    db.auth.signInWithIdToken({
+      clientName: "force_prefabrik_auth",
+      idToken: idToken,
+    });
+  }, [getToken]);
+
+  useEffect(() => {
+    signInToInstantWithClerkToken();
+  }, [signInToInstantWithClerkToken]);
+
   useEffect(() => {
     if (isMediumDevice || isLargeDevice || isExtraLargeDevice) {
       dispatch(setIsSidebarCollapsed(false));
@@ -34,10 +56,6 @@ function Layout({ children }: { children: React.ReactNode }) {
       dispatch(setIsSidebarCollapsed(true));
     }
   }, [isMediumDevice, isLargeDevice, isExtraLargeDevice, dispatch]);
-
-  if (!isLoading && !error && !user) {
-    redirect("/login");
-  }
 
   return (
     <div className="flex min-h-screen w-full bg-gray-800 text-gray-50">
