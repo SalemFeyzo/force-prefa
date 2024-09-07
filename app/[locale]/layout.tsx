@@ -8,13 +8,13 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import NextTopLoader from "nextjs-toploader";
 
 import { locales } from "@/lib/navigation";
-import ReduxStoreProvider from "@/providers/store-provider";
+import ReduxStoreProvider from "@/components/providers/store-provider";
+import ClerkAuthProvider from "@/components/providers/clerk-auth-provider";
 
 import "../globals.css";
-import NextTopLoader from "nextjs-toploader";
-import ClerkAuthProvider from "@/providers/clerk-auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"] });
