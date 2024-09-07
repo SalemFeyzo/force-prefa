@@ -22,6 +22,7 @@ const useNetworkStatus = () => {
       window.removeEventListener("online", updateNetworkStatus);
       window.removeEventListener("offline", updateNetworkStatus);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigator.onLine]);
 
   return { isOnline };
