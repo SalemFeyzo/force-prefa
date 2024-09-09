@@ -33,7 +33,7 @@ export default clerkMiddleware((auth, req) => {
     const { sessionClaims } = auth();
     const { role } = sessionClaims?.metadata as UserMetadata;
     if (role !== "admin") {
-      // 👉 If the user is not a beta user, redirect them to the waitlist
+      // 👉 If the user is not a admin user, redirect them to the waitlist
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
